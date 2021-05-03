@@ -24,77 +24,77 @@ export class BankServiceService {
   getAll(): Observable<Bank[]> {
     return this.http.get<Bank[]>(this.apiServer + 'getAllBanks') .pipe(
       catchError(this.errorHandler))
-   
+
   }
   create(bank:Bank): Observable<Bank> {
     return this.http.post<Bank>(this.apiServer + 'addBank', this.httpOptions)
-    .pipe(
-      catchError(this.errorHandler)
-    )
-  }  
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
   getByName( name:string): Observable<Bank> {
     return this.http.post<Bank>(this.apiServer + 'getBankByName', this.httpOptions)
-    .pipe(
-      catchError(this.errorHandler)
-    )
+      .pipe(
+        catchError(this.errorHandler)
+      )
   }
 
-  
+
 
   update( bank:Bank): Observable<Bank> {
     return this.http.put<Bank>(this.apiServer + 'updateBank' , this.httpOptions)
-    .pipe(
-      catchError(this.errorHandler)
-    )
+      .pipe(
+        catchError(this.errorHandler)
+      )
   }
 
   delete(id: number){
     return this.http.delete<Bank>(this.apiServer + 'deleteBank/' + id, this.httpOptions)
-    .pipe(
-      catchError(this.errorHandler)
-    )
+      .pipe(
+        catchError(this.errorHandler)
+      )
   }
 
   getBankOffreByName(name:string): Observable<BankOffres[]> {
     return this.http.get<BankOffres[]>(this.apiServer + 'getBankOffreByname/'+name, this.httpOptions)
-    .pipe(
-      catchError(this.errorHandler)
-    )
+      .pipe(
+        catchError(this.errorHandler)
+      )
   }
   getBestOffre(credit:Credit): Observable<BankOffres[]> {
     return this.http.post<BankOffres[]>(this.apiServer + 'getBestOffres', this.httpOptions)
-    .pipe(
-      catchError(this.errorHandler)
-    )
+      .pipe(
+        catchError(this.errorHandler)
+      )
   }
 
   getBankByIR(interrestRate:number): Observable<Bank[]> {
     return this.http.post<Bank[]>(this.apiServer + 'getALLBankByIr', this.httpOptions)
-    .pipe(
-      catchError(this.errorHandler)
-    )
+      .pipe(
+        catchError(this.errorHandler)
+      )
   }
 
 
 
   errorHandler(error: { error: { message: string; }; status: any; message: any; }) {
-     let errorMessage = '';
-     if(error.error instanceof ErrorEvent) {
-       // Get client-side error
-       errorMessage = error.error.message;
-     } else {
-       // Get server-side error
-       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-     }
-     console.log(errorMessage);
-     return throwError(errorMessage);
-  }
-   
+    let errorMessage = '';
+    if(error.error instanceof ErrorEvent) {
+      // Get client-side error
+      errorMessage = error.error.message;
+    } else {
+      // Get server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.log(errorMessage);
+    return throwError(errorMessage);
   }
 
+}
 
 
 
 
-  
+
+
 

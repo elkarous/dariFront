@@ -8,7 +8,7 @@ import { Credit } from '../model/credit';
   providedIn: 'root'
 })
 export class SimulationServiceService {
-  private apiServer = "http://localhost:8081/dari/estimation/";
+  private apiServer = "http://localhost:8081/dari/simulation/";
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -20,21 +20,21 @@ export class SimulationServiceService {
 
   simulationByIr (credit:Credit) {
     return this.http.post(this.apiServer + 'simulationByIr' ,JSON.stringify(credit),this.httpOptions)
-    .pipe(
-      catchError(this.errorHandler)
-    )
+      .pipe(
+        catchError(this.errorHandler)
+      )
   }
   simulationInAllBank (credit:Credit) {
-    return this.http.post(this.apiServer + 'simulationInAllBank', this.httpOptions)
-    .pipe(
-      catchError(this.errorHandler)
-    )
+    return this.http.post(this.apiServer + 'simulationInAllBank',JSON.stringify(credit), this.httpOptions)
+      .pipe(
+        catchError(this.errorHandler)
+      )
   }
   simulatsimulationbybank (credit:Credit, name:string) {
-    return this.http.post(this.apiServer + 'simulationbybank/'+name, this.httpOptions)
-    .pipe(
-      catchError(this.errorHandler)
-    )
+    return this.http.post(this.apiServer + 'simulationbybank/'+name, JSON.stringify(credit),this.httpOptions)
+      .pipe(
+        catchError(this.errorHandler)
+      )
   }
   errorHandler(error: { error: { message: string; }; status: any; message: any; }) {
     let errorMessage = '';
@@ -47,5 +47,5 @@ export class SimulationServiceService {
     }
     console.log(errorMessage);
     return throwError(errorMessage);
- }
+  }
 }

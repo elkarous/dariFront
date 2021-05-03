@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/internal/operators/catchError';
 import { House } from '../model/house';
 import { Unitprice } from '../model/unitprice';
+import {Bank} from '../model/bank';
 
 @Injectable({
   providedIn: 'root'
@@ -19,36 +20,41 @@ export class EstimationServiceService {
 
   constructor(private http :HttpClient) { }
 
+  getAll(): Observable<Unitprice[]> {
+    return this.http.get<Unitprice[]>(this.apiServer + 'getAllUnitprice') .pipe(
+      catchError(this.errorHandler))
+
+  }
   create(unitprice:Unitprice): Observable<Unitprice> {
     return this.http.post<Unitprice>(this.apiServer + 'addunitprice',JSON.stringify(unitprice), this.httpOptions)
-    .pipe(
-      catchError(this.errorHandler)
-    )
+      .pipe(
+        catchError(this.errorHandler)
+      )
   }
   update( unitprice:Unitprice): Observable<Unitprice> {
     return this.http.put<Unitprice>(this.apiServer + 'updateunitprice' , this.httpOptions)
-    .pipe(
-      catchError(this.errorHandler)
-    )
+      .pipe(
+        catchError(this.errorHandler)
+      )
   }
   delete(id: number){
     return this.http.delete<Unitprice>(this.apiServer + 'deleteunitprice/' + id, this.httpOptions)
-    .pipe(
-      catchError(this.errorHandler)
-    )
+      .pipe(
+        catchError(this.errorHandler)
+      )
   }
 
   estimation(house:House): Observable<any[]> {
     return this.http.post<any[]>(this.apiServer + 'estimation',JSON.stringify(house), this.httpOptions)
-    .pipe(
-      catchError(this.errorHandler)
-    )
+      .pipe(
+        catchError(this.errorHandler)
+      )
   }
   estimationWithEmail (house:House, email:string) {
     return this.http.post(this.apiServer + 'estimationWithMail/'+email, this.httpOptions)
-    .pipe(
-      catchError(this.errorHandler)
-    )
+      .pipe(
+        catchError(this.errorHandler)
+      )
   }
 
   errorHandler(error: { error: { message: string; }; status: any; message: any; }) {
@@ -62,5 +68,5 @@ export class EstimationServiceService {
     }
     console.log(errorMessage);
     return throwError(errorMessage);
- }
+  }
 }
