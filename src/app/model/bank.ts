@@ -1,7 +1,7 @@
 import { BankOffres } from "./bankOffres";
 
 
-export interface Bank{
+export class Bank{
     id: number;
     name:string;
     description:string;

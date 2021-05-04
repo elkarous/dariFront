@@ -23,6 +23,7 @@ import { ChartComponent } from './chart/chart.component';
 import { BankDashComponent } from './bank-dash/bank-dash.component';
 import { BankUpateComponent } from './bank-upate/bank-upate.component';
 import { BankAddComponent } from './bank-add/bank-add.component';
+import { UnitPriceDashComponent } from './unit-price-dash/unit-price-dash.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { BankAddComponent } from './bank-add/bank-add.component';
     ChartComponent,
     BankDashComponent,
     BankUpateComponent,
-    BankAddComponent
+    BankAddComponent,
+    UnitPriceDashComponent
   ],
     imports: [
       BrowserModule,
