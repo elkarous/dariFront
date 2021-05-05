@@ -2,9 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/internal/operators/catchError';
-import { House } from '../model/house';
-import { Unitprice } from '../model/unitprice';
-import {Bank} from '../model/bank';
+import { House } from '../shered/model/house';
+import { Unitprice } from '../shered/model/unitprice';
+import {Bank} from '../shered/model/bank';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +32,7 @@ export class EstimationServiceService {
       )
   }
   update( unitprice:Unitprice): Observable<Unitprice> {
-    return this.http.put<Unitprice>(this.apiServer + 'updateunitprice' , this.httpOptions)
+    return this.http.put<Unitprice>(this.apiServer + 'updateunitprice' , JSON.stringify(unitprice),this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       )
@@ -45,7 +45,7 @@ export class EstimationServiceService {
   }
 
   estimation(house:House): Observable<any[]> {
-    return this.http.post<any[]>(this.apiServer + 'estimation',JSON.stringify(house), this.httpOptions)
+    return this.http.post<any[]>(this.apiServer + 'estimation',house, this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       )

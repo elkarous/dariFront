@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs/internal/observable/throwError';
 import { catchError } from 'rxjs/internal/operators/catchError';
-import { Credit } from '../model/credit';
+import { Credit } from '../shered/model/credit';
 
 @Injectable({
   providedIn: 'root'

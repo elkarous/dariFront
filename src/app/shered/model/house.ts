@@ -13,6 +13,6 @@ nbRooms: number;
  garden: boolean;
    sousSol: boolean;
  ascenseur: boolean;
- kindOfGood: Kindofgood;
+ kindofgood: Kindofgood;
 
     }

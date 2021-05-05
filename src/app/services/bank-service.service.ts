@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpErrorResponse, HttpHeaders  } from '@angular/common/http';
-import { Bank } from '../model/bank';
+import { Bank } from '../shered/model/bank';
 import {  throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { BankOffres } from '../model/bankOffres';
-import { Credit } from '../model/credit';
+import { BankOffres } from '../shered/model/bankOffres';
+import { Credit } from '../shered/model/credit';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +27,7 @@ export class BankServiceService {
 
   }
   create(bank:Bank): Observable<Bank> {
-    return this.http.post<Bank>(this.apiServer + 'addBank', this.httpOptions)
+    return this.http.post<Bank>(this.apiServer + 'addBank',JSON.stringify(bank) ,this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       )
@@ -42,7 +42,7 @@ export class BankServiceService {
 
 
   update( bank:Bank): Observable<Bank> {
-    return this.http.put<Bank>(this.apiServer + 'updateBank' , this.httpOptions)
+    return this.http.put<Bank>(this.apiServer + 'updateBank' ,JSON.stringify(bank), this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       )
@@ -54,6 +54,31 @@ export class BankServiceService {
         catchError(this.errorHandler)
       )
   }
+
+  createOffer(offre:BankOffres,id :number): Observable<BankOffres> {
+    return this.http.post<BankOffres>(this.apiServer + 'addBankOffre/'+id,JSON.stringify(offre) ,this.httpOptions)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
+
+
+
+  updateOffer(offre:BankOffres): Observable<BankOffres> {
+    return this.http.put<BankOffres>(this.apiServer + 'updateBankOffre' ,JSON.stringify(offre), this.httpOptions)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
+  deleteOffer(idBank: number,idOffre){
+    return this.http.delete<BankOffres>(this.apiServer + 'deleteBankOffre/' + idBank+'/'+idOffre, this.httpOptions)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
 
   getBankOffreByName(name:string): Observable<BankOffres[]> {
     return this.http.get<BankOffres[]>(this.apiServer + 'getBankOffreByname/'+name, this.httpOptions)
