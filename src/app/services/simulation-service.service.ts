@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs/internal/observable/throwError';
 import { catchError } from 'rxjs/internal/operators/catchError';
 import { Credit } from '../shered/model/credit';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,20 +19,20 @@ export class SimulationServiceService {
 
   constructor(private http :HttpClient) { }
 
-  simulationByIr (credit:Credit) {
-    return this.http.post(this.apiServer + 'simulationByIr' ,JSON.stringify(credit),this.httpOptions)
+  simulationByIr (credit:Credit) :Observable<Credit>{
+    return this.http.post<Credit>(this.apiServer + 'simulationByIr' ,JSON.stringify(credit),this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       )
   }
-  simulationInAllBank (credit:Credit) {
-    return this.http.post(this.apiServer + 'simulationInAllBank',JSON.stringify(credit), this.httpOptions)
+  simulationInAllBank (credit:Credit):Observable<any> {
+    return this.http.post<any>(this.apiServer + 'simulationInAllBank',JSON.stringify(credit), this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       )
   }
-  simulatsimulationbybank (credit:Credit, name:string) {
-    return this.http.post(this.apiServer + 'simulationbybank/'+name, JSON.stringify(credit),this.httpOptions)
+  simulatsimulationbybank (credit:Credit, name:string):Observable<any> {
+    return this.http.post<any>(this.apiServer + 'simulationbybank/'+name, JSON.stringify(credit),this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       )
