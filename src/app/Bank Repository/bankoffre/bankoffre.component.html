@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <h1 class="col-10 align-items-start">{{name}} Offres </h1>
+    <div class=" col-2 align-items-end">
+      <button class="btn btn-light">  <a  class="fa fa-plus fa-x mb-0" (click)="openDialog()">Add Offer </a></button>
+    </div>
+  </div>
+  <table class="table table-light">
+    <thead>
+    <tr>
+
+      <th scope="col">Name </th>
+      <th scope="col">Description</th>
+      <th scope="col">Grace Period </th>
+      <th scope="col">Self Financing</th>
+      <th scope="col"> Max Credit </th>
+      <th scope="col"> Periode</th>
+      <th scope="col"> Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let offre of offres">
+   <td>{{offre.nameBankoffer}}</td>
+      <td>{{offre.descriptionBankOffer}}</td>
+      <td>{{offre.gracePeriod}}</td>
+      <td>{{offre.selfFinancing}}</td>
+      <td>{{offre.maxCredit}}</td>
+      <td>{{offre.period}}</td>
+      <td><button class="btn btn-primary ml-2" (click)="openDialogUpdate(offre)" >Update</button>
+      <button class="btn btn-danger ml-2" (click)="delete(offre)" >Delete</button></td>
+    </tr>
+
+
+  </table>
+</div>

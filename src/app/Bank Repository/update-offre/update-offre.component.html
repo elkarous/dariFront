@@ -1,0 +1,36 @@
+<div class="container ">
+  <form class="m-3"#unitForm="ngForm">
+    <div class="form-group ">
+      <label >Name</label>
+      <input name="name" [(ngModel)]="offre.nameBankoffer" value="{{offre.nameBankoffer}}" class="form-control" >
+
+    </div>
+
+    <div class="form-group">
+      <label >Description </label>
+      <input type="text" class="form-control" [(ngModel)]="offre.descriptionBankOffer" value="{{offre.descriptionBankOffer}}" name="Description" placeholder="2">
+    </div>
+    <div class="form-group">
+      <label >Max Credit  </label>
+      <input type="number" class="form-control" [(ngModel)]="offre.maxCredit" value="{{offre.maxCredit}}" name="maxCredit" placeholder="2">
+    </div>
+    <div class="form-group">
+      <label >grace Period </label>
+      <input type="text" class="form-control" [(ngModel)]="offre.gracePeriod" value="{{offre.gracePeriod}}" name="gracePeriod" placeholder="2">
+    </div>
+    <div class="form-group">
+      <label > period  </label>
+      <input type="number" class="form-control" [(ngModel)]="offre.period" value="{{offre.period}}"name="selfFinancing" placeholder="2">
+    </div>
+    <div class="form-group">
+      <label >self Financing  </label>
+      <input type="number" class="form-control" [(ngModel)]="offre.selfFinancing" value="{{offre.selfFinancing}}"name="selfFinancing" placeholder="2">
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary" (click)="update()">Update</button>
+  </form>
+</div>
+
+

@@ -1,0 +1,91 @@
+<div class="container">
+  <form class="m-3" >
+
+      <div class="form-group">
+        <label >municipal</label>
+        <select name="municipal" [(ngModel)]="house.adress.municipal" class="form-control" >
+          <option selected>Raoud</option>
+          <option>Douz</option>
+        </select>
+      </div>
+
+
+
+    <div class="form-group ">
+      <label >KindOfGood</label>
+      <select name="kindOfGood" [(ngModel)]="house.kindofgood" class="form-control">
+        <option selected>land</option>
+        <option>apartment</option>
+        <option>villa</option>
+        <option>workshop</option>
+      </select>
+    </div>
+
+          <div class="form-group">
+            <label >Area </label>
+            <input type="number" class="form-control" [(ngModel)]="house.area" name="area" placeholder="2">
+          </div>
+
+           <div class="form-group">
+             <label >Rooms </label>
+             <input type="number" class="form-control" [(ngModel)]="house.nbRooms" name="nbRooms" placeholder="2">
+           </div>
+
+             <div class="form-group">
+               <label >Garages </label>
+               <input type="number" class="form-control" [(ngModel)]="house.nbGarage" name="nbGarage" placeholder="2">
+             </div>
+
+
+             <div class="form-group">
+               <div class="form-check">
+                 <input class="form-check-input"  [(ngModel)]="house.terrace" type="checkbox" name="terrace">
+                 <label class="form-check-label mr-2" >
+                   Terrace
+                 </label>
+               </div>
+             </div>
+
+             <div class="form-group">
+               <div class="form-check">
+                 <input class="form-check-input"  [(ngModel)]="house.swimmingPool" type="checkbox" name="swimmingPool">
+                 <label class="form-check-label mr-2" >
+                   Swimming Pool
+                 </label>
+               </div>
+             </div>
+
+                <div class="form-group">
+                  <div class="form-check">
+                    <input class="form-check-input" [(ngModel)]="house.garden" type="checkbox" name="garden">
+                    <label class="form-check-label mr-2" >
+                      Garden
+                    </label>
+                  </div>
+                </div>
+       <div class="form-group">
+                  <div class="form-check">
+                    <input class="form-check-input"  [(ngModel)]="house.sousSol" type="checkbox" name="sousSol">
+                    <label class="form-check-label mr-2" >
+                      Sous Sol
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="form-check">
+                    <input class="form-check-input"  name="ascensseur" [(ngModel)]="house.ascenseur" type="checkbox" id="ascenseur">
+                    <label class="form-check-label mr-2" >
+                      Ascenseur
+                    </label>
+                  </div>
+                </div>
+
+    <button type="submit" class="btn btn-primary" (click)="estimation()">Estimate</button>
+  </form>
+
+  <div *ngFor="let value of resulat.keys()">
+
+    {{value}}{{resulat.get(value)}}
+  </div>
+</div>

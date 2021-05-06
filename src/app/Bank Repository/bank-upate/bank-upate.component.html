@@ -1,0 +1,21 @@
+<div class="container ">
+  <form class="m-3"#unitForm="ngForm">
+    <div class="form-group ">
+      <label >Name</label>
+      <input name="name" [(ngModel)]="bank.name"  value="{{bank.name}}" class="form-control" >
+
+    </div>
+
+    <div class="form-group">
+      <label >Description </label>
+      <input type="text" class="form-control" [(ngModel)]="bank.description" value="{{bank.description}}" name="maxunitprice" placeholder="2">
+    </div>
+    <div class="form-group">
+      <label >Interest Rate  </label>
+      <input type="number" class="form-control" [(ngModel)]="bank.interestRate" value="{{bank.interestRate}}" name="nbRooms" placeholder="2">
+    </div>
+
+
+    <button type="submit" class="btn btn-primary" (click)="update()">Add</button>
+  </form>
+</div>

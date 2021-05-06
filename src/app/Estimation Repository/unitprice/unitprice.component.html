@@ -1,0 +1,29 @@
+<div class="background">
+  <form class="m-3"#unitForm="ngForm">
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label >municipal</label>
+        <select name="municipal" [(ngModel)]="unitprice.municipal" class="form-control" >
+          <option selected>Raoud</option>
+          <option>kebelli</option>
+        </select>
+      </div>
+
+    </div>
+
+
+    <div class="form-row">
+      <div class="form-group">
+        <label >maxunitprice </label>
+        <input type="number" class="form-control" [(ngModel)]="unitprice.maxunitprice" name="maxunitprice" placeholder="2">
+      </div>
+      <div class="form-group">
+        <label >minunitprice </label>
+        <input type="number" class="form-control" [(ngModel)]="unitprice.minunitprice" name="nbRooms" placeholder="2">
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" (click)="Add()">Add</button>
+  </form>
+</div>
+

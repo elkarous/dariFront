@@ -1,0 +1,26 @@
+<div class="container">
+  <table class="table table-dark">
+    <thead>
+    <tr>
+
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Intrest Rate </th>
+      <th scope="col">Offres</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let bank of banks">
+      <td>{{bank.name}}</td>
+      <td>{{bank.description}}</td>
+      <td>{{bank.interestRate}}</td>
+      <td><button class="btn btn-light" (click)="getOffres(bank)">get offres</button></td>
+    </tr>
+    <tr>
+
+  </table>
+
+
+  <app-bankoffre *ngFor=" let offre of offres" [offre]="offre"></app-bankoffre>
+
+</div>

@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <h1 class="col-10 align-items-start">Unit Price Table</h1>
+    <div class=" col-2 align-items-end">
+      <button class="btn btn-light">  <a  class="fa fa-plus fa-x mb-0" (click)="openDialog()">Add Unit Price </a></button>
+    </div>
+  </div>
+
+  <table class="table table-light">
+    <thead>
+    <tr>
+
+      <th scope="col">Municipal</th>
+      <th scope="col">Min Price</th>
+      <th scope="col"> Max Price </th>
+      <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let unitprice  of unitPrices ">
+      <td>{{unitprice.municipal }}</td>
+      <td>{{unitprice.minunitprice}}</td>
+      <td>{{unitprice.maxunitprice}}</td>
+
+       <td> <button class="btn btn-primary ml-2" (click)="openDialogUpdate(unitprice)" >Update</button>
+        <button class="btn btn-danger ml-2"  (click)="delete(unitprice)">Delete</button></td>
+    </tr>
+    <tr>
+
+  </table>
+
+
+
+
+</div>
+
+

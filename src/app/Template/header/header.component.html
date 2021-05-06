@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white text-danger  ">
+  <a class="navbar-brand " href="#"><img src="../../../assets/img/Dari.tn.png" class="logo" alt="logo"></a>
+  <button class="btn  rounded-pill col-3 fa fa-plus fa-x  " style="background: #e80b0b ;color: white;width:100px;: 40px">Add An Ad</button>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="Dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dashbord
+        </a>
+        <div class="dropdown-menu" aria-labelledby="Dropdown">
+          <a class="dropdown-item" routerLink="/bankDash"> Bank</a>
+          <a class="dropdown-item" routerLink="/unitpriceDash">Unit Price  </a>
+
+
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " routerLink="/estimation">Estimation Of House </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Simulation
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/simulation"> By Intereest Rate</a>
+          <a class="dropdown-item" routerLink="/simulationByBank">By Bank </a>
+
+          <a class="dropdown-item" routerLink="/simulationAllBank">In All Bank </a>
+
+        </div>
+      </li>
+
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+
+      <button class="btn btn-outline-primary  fa fa-sign-in my-2 my-sm-0" mat-button (click)="openDialog()" type="submit"> Login</button>
+
+    </form>
+  </div>
+</nav>

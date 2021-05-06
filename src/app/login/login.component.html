@@ -1,0 +1,17 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Login Form -->
+    <form>
+      <div class="form-row">
+      <input type="text" id="login" class="form-control " [(ngModel)]="user.username" name="login" placeholder="login">
+      <input type="text" id="password" class="form-control mt-2"  [(ngModel)]="user.password" name="password" placeholder="password">
+      <input type="submit" class="btn btn-info mt-2" value="Log In" (click)="login()">
+      </div>
+    </form>
+
+
+
+  </div>
+</div>
