@@ -28,6 +28,8 @@ import { UnitPriceDashComponent } from './Estimation Repository/unit-price-dash/
 import { AddOffreComponent } from './Bank Repository/add-offre/add-offre.component';
 import { UpdateOffreComponent } from './Bank Repository/update-offre/update-offre.component';
 import { UpdateUnitPriceComponent } from './Estimation Repository/update-unit-price/update-unit-price.component';
+import { CarouselComponent } from './Template/carousel/carousel.component';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -55,7 +57,8 @@ import { UpdateUnitPriceComponent } from './Estimation Repository/update-unit-pr
     UnitPriceDashComponent,
     AddOffreComponent,
     UpdateOffreComponent,
-    UpdateUnitPriceComponent
+    UpdateUnitPriceComponent,
+    CarouselComponent
   ],
     imports: [
       ToastrModule,
@@ -67,7 +70,8 @@ import { UpdateUnitPriceComponent } from './Estimation Repository/update-unit-pr
       BrowserAnimationsModule,
       HttpClientModule,
       ReactiveFormsModule,
-      FormsModule
+      FormsModule,
+      FontAwesomeModule
     ],
   providers: [],
   bootstrap: [AppComponent]

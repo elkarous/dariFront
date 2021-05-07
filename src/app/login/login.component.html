@@ -1,17 +1,52 @@
-<div class="wrapper fadeInDown">
-  <div id="formContent">
-    <!-- Tabs Titles -->
 
-    <!-- Login Form -->
-    <form>
-      <div class="form-row">
-      <input type="text" id="login" class="form-control " [(ngModel)]="user.username" name="login" placeholder="login">
-      <input type="text" id="password" class="form-control mt-2"  [(ngModel)]="user.password" name="password" placeholder="password">
-      <input type="submit" class="btn btn-info mt-2" value="Log In" (click)="login()">
+<div class="row mt-5">
+  <div class="col-md-6 mx-auto">
+    <form [formGroup]="loginForm" (ngSubmit)="signIn()">
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          formControlName="email"
+          type="text"
+          [ngClass]="{
+            'is-valid': loginForm.get('email').valid,
+            'is-invalid': loginForm.get('email').invalid  && (loginForm.get('email').touched || loginForm.get('email').dirty)
+          }"
+          class="form-control"
+          id="email"
+        >
+
+        <div
+          *ngIf="loginForm.get('email').invalid && (loginForm.get('email').touched || loginForm.get('encryptedPassword').dirty)"
+          Class="invalid-feedback"
+        >
+          <div *ngIf="loginForm.get('email').getError('required')">Email is Required !</div>
+        </div>
       </div>
+
+      <div class="form-group">
+        <label for="encryptedPassword">Password</label>
+        <input
+          formControlName="encryptedPassword"
+          type="password"
+          [ngClass]="{
+            'is-valid': loginForm.get('encryptedPassword').valid,
+            'is-invalid': loginForm.get('encryptedPassword').invalid  && (loginForm.get('encryptedPassword').touched || loginForm.get('encryptedPassword').dirty)
+          }"
+          class="form-control"
+          id="encryptedPassword"
+        >
+
+        <div
+          *ngIf="loginForm.get('encryptedPassword').invalid && (loginForm.get('encryptedPassword').touched || loginForm.get('encryptedPassword').dirty)"
+          Class="invalid-feedback"
+        >
+          <div *ngIf="loginForm.get('encryptedPassword').getError('required')">Password is Required !</div>
+          <div *ngIf="loginForm.get('encryptedPassword').getError('minlength')">Password was to be 8 Caracters !</div>
+        </div>
+      </div>
+
+      <button [disabled]="loginForm.invalid" class="btn btn-primary btn-block">Sign In</button>
     </form>
-
-
-
   </div>
 </div>
