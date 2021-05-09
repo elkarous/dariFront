@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Bank } from '../../shered/model/bank';
-import { BankOffres } from '../../shered/model/bankOffres';
-import { BankServiceService } from '../../services/bank-service.service';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {GooglePlaceDirective} from 'ngx-google-places-autocomplete';
+import {Address} from 'ngx-google-places-autocomplete/objects/address';
+
+
 
 @Component({
   selector: 'app-bank',
@@ -9,28 +10,41 @@ import { BankServiceService } from '../../services/bank-service.service';
   styleUrls: ['./bank.component.scss']
 })
 export class BankComponent implements OnInit {
+  title = 'firstApp';
+  @ViewChild("placesRef") placesRef : GooglePlaceDirective;
+  option={
+    type:[],
+    componentRestrictions:{country:'MX'}
+  }
+  lat ;
+  long ;
+  title_add;
+  zoom;
 
-  banks: Bank[] ;
-  name: string;
-offres:BankOffres[];
 
-  constructor(private bankservice:BankServiceService) { }
+  constructor() { }
+
+
 
   ngOnInit(): void {
-    this.bankservice.getAll().subscribe((data: Bank[])=>{
-        console.log(data);
-        this.banks = data;
-      }
-    )
-  }
-  getOffres(bankcli:any){
-    console.log(bankcli)
-    this.bankservice.getBankOffreByName(bankcli.name).subscribe((data: BankOffres[])=>{
-        console.log(data);
-        this.offres= data;
-      }
-    )
-    console.log(this.offres);
-  }
+this.setCurentLocation();
 
+  }
+  public handleAddressChange(address: Address) {
+    console.log(address)
+    console.log("Lat : "+ address.geometry.location.lat())
+    console.log("Long : "+ address.geometry.location.lng())
+    this.lat=address.geometry.location.lat();
+    this.lat=address.geometry.location.lng()
+  }
+public setCurentLocation(){
+    if('geolocation'in navigator){
+      navigator.geolocation.getCurrentPosition(position =>{
+      this.lat=position.coords.latitude;
+      this.long=position.coords.latitude;
+      this.zoom=15
+    } )
+
+    }
+}
 }

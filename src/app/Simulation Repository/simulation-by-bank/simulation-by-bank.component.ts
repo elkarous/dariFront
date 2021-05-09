@@ -1,12 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Credit} from '../../shered/model/credit';
 import {SimulationServiceService} from '../../services/simulation-service.service';
-import * as CanvasJS from 'src/assets/canvasjs.min';
-import {ResultSimulation} from '../../shered/model/resultSimulation';
-import {UpdateUnitPriceComponent} from '../../Estimation Repository/update-unit-price/update-unit-price.component';
-import {ChartComponent} from '../chart/chart.component';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {Unitprice} from '../../shered/model/unitprice';
+import {ChartResultComponent} from '../chart-result/chart-result.component';
 @Component({
   selector: 'app-simulation-by-bank',
   templateUrl: './simulation-by-bank.component.html',
@@ -43,8 +40,8 @@ this.open()
 
 }
 open(){
-  const dialogRef = this.dialog.open(ChartComponent,{
-    height:"370px",
+  const dialogRef = this.dialog.open(ChartResultComponent,{
+    height:"500px",
     width:"700px",
     data:this.myMap
   });

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Credit} from '../../shered/model/credit';
 import {SimulationServiceService} from '../../services/simulation-service.service';
-import {ChartComponent} from '../chart/chart.component';
 import {MatDialog} from '@angular/material/dialog';
-import {color} from 'chart.js/helpers';
+
+import {ChartResultComponent} from '../chart-result/chart-result.component';
 
 @Component({
   selector: 'app-simulation-all-bank',
@@ -36,7 +36,7 @@ this.myMap= new Map(Object.entries(myMap));
     });
   }
   open(){
-    const dialogRef = this.dialog.open(ChartComponent,{
+    const dialogRef = this.dialog.open(ChartResultComponent,{
       height:"600px",
       width:"700px",
       panelClass:"dialog",
