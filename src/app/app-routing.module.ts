@@ -14,23 +14,32 @@ import {LoginComponent} from './login/login.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {AfterAuthGuard} from './guards/after-auth.guard';
 import {HeaderComponent} from './Template/header/header.component';
+import {DashHomeComponent} from './dash-home/dash-home.component';
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  { path: 'simulation', component: SimulationComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'simulationByBank', component: SimulationByBankComponent },
-  { path: 'simulationAllBank', component: SimulationAllBankComponent },
-  { path: 'estimation', component: EstimationComponent},
-  { path: 'bank', component: BankComponent},
-  {path:'header',component:HeaderComponent },
-  { path: 'unitpriceDash', component: UnitPriceDashComponent},
-  { path: 'unitprice', component: UnitpriceComponent},
-  { path: 'bankOffre/:name/:id', component: BankoffreComponent},
   { path: "login", component: LoginComponent },
-  { path: "dashboard",component:DashboardComponent ,children:[
-      { path: 'bankDash', component: BankDashComponent}
-    ]}
+  { path: 'unitprice', component: UnitpriceComponent},
+  { path: 'home', component: HomeComponent ,children:[
+      { path: 'simulation', component: SimulationComponent },
+      { path: 'simulationByBank', component: SimulationByBankComponent },
+      { path: 'simulationAllBank', component: SimulationAllBankComponent },
+      { path: 'estimation', component: EstimationComponent},
+      { path: 'bank', component: BankComponent},
+    ]},
 
+  { path: "dashboard",component:DashboardComponent ,children:[
+      { path: 'home', component: DashHomeComponent },
+      { path: 'bankDash', component: BankDashComponent,children:[
+          { path: 'bankOffre/:name/:id', component: BankoffreComponent}
+        ]
+      },
+      { path: 'unitPriceDash', component: UnitPriceDashComponent},
+
+    ]},
+  {path: 'NotFound', component: PageNotFoundComponent},
+
+  {path: '**', redirectTo:'NotFound'}
 ];
 
 @NgModule({

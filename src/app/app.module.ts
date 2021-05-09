@@ -30,7 +30,7 @@ import { UpdateOffreComponent } from './Bank Repository/update-offre/update-offr
 import { UpdateUnitPriceComponent } from './Estimation Repository/update-unit-price/update-unit-price.component';
 import { CarouselComponent } from './Template/carousel/carousel.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import { NavComponent } from './nav/nav.component';
+
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -45,7 +45,9 @@ import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
 import { ChartResultComponent } from './Simulation Repository/chart-result/chart-result.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import {JwtInterceptor} from './services/jwt.interceptor'
+import {JwtInterceptor} from './services/jwt.interceptor';
+import { DashHomeComponent } from './dash-home/dash-home.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,9 +70,10 @@ import {JwtInterceptor} from './services/jwt.interceptor'
     UpdateOffreComponent,
     UpdateUnitPriceComponent,
     CarouselComponent,
-    NavComponent,
     ChartResultComponent,
-    DashboardComponent
+    DashboardComponent,
+    DashHomeComponent,
+    PageNotFoundComponent
   ],
     imports: [
       MatGoogleMapsAutocompleteModule,

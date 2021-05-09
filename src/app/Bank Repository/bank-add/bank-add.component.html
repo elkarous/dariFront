@@ -1,4 +1,6 @@
-<div class="container ">
+<div class="container " style="width:500px">
+  <h1>Add Bank </h1>
+  <hr>
   <form class="m-3"#unitForm="ngForm">
       <div class="form-group ">
         <label >Name</label>
@@ -15,8 +17,10 @@
         <label >Interest Rate  </label>
         <input type="number" class="form-control" [(ngModel)]="bank.interestRate" name="nbRooms" placeholder="2">
       </div>
-
-
-    <button type="submit" class="btn btn-primary" (click)="add()">Add</button>
+    <hr>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cancel</button>
+    <button type="submit" class="btn btn-primary" [mat-dialog-close]="true"  (click)="add()">Add</button>
+    </mat-dialog-actions>
   </form>
 </div>

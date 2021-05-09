@@ -28,6 +28,7 @@ export class BankDashComponent implements OnInit {
   ngOnInit(): void {
     this.getAll();
     this.banktr =new Bank();
+
   }
   getAll(){
     this.bankservice.getAll().subscribe((data: Bank[])=>{
@@ -43,10 +44,12 @@ export class BankDashComponent implements OnInit {
 
   }
   getOffres(bankcli:Bank){
-    this.router.navigate(["bankOffre",bankcli.name,bankcli.id])
+    this.router.navigate(["/dashboard/bankDash/bankOffre",bankcli.name,bankcli.id])
   }
   openDialog() {
-    const dialogRef = this.dialog.open(BankAddComponent);
+    const dialogRef = this.dialog.open(BankAddComponent,{
+
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

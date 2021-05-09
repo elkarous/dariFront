@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {GooglePlaceDirective} from 'ngx-google-places-autocomplete';
 import {Address} from 'ngx-google-places-autocomplete/objects/address';
-
+import {$} from 'protractor';
 
 
 @Component({
@@ -22,7 +22,11 @@ export class BankComponent implements OnInit {
   zoom;
 
 
-  constructor() { }
+
+
+  constructor() {
+
+  }
 
 
 
