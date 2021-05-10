@@ -1,66 +1,126 @@
-
+<div class=" container mt-5" >
   <div class="row mb-0" >
-<div class="col bg-light">
-  <h1 class="mt-2">SIMULATOR OF CREDIT </h1>
-  <br>
+<div class="col-7  text-white text-uppercase" style="background-color: #4D774E">
+  <h1 class="mt-2 ">SIMULATOR OF CREDIT </h1>
+  <hr style="width: 50px; color: white; margin-left: 0px; border: white solid  1px">
   <form class="m-3"#unitForm="ngForm">
-    <div class="form-row">
-      <div class="form-group ">
+    <div class="form-group  ">
 
-        <label >amount</label>
-        <input name="amount" type="text" [(ngModel)]="credit.amount"  value="{{credit.amount}}" class="form-control " />
-        <input name="amount" type="range" [(ngModel)]="credit.amount"  min="1000" max="1000000" class="form-control" />
+    <label class="text-white text-uppercase " >Amount</label>
+<div class="row">
+    <div class="input-group   col-4 offset-8" >
+
+      <input name="amount" type="text" [(ngModel)]="credit.amount"  value="{{credit.amount}}" class="form-control   " />
+      <div class="input-group-append   " >
+        <div class="input-group-text"><i class="font-weight-bold" >DTN</i></div>
       </div>
-
+    </div>
     </div>
 
 
+        <mat-slider name="amount" [(ngModel)]="credit.amount" thumbLabel [displayWith]="formatLabel" value="{{credit.amount}}" tickInterval="100" step="100" color="warn" class="form-control-range w-100 rounded mt-2 " style="background-color: #9DC88D " min="999" max="100000" aria-label="units"></mat-slider>
+
+  </div>
+
+
+
+    <div class="form-group">
+      <label >Period </label>
+      <div class="row">
+      <div class="input-group col-4 offset-8">
+        <input name="period" type="text" [(ngModel)]="credit.period"  value="{{credit.period}}" class="form-control " />
+        <div class="input-group-append">
+          <div class="input-group-text"><i class="font-weight-bold" >YEAR</i></div>
+        </div>
+      </div>
+      </div>
+      <mat-slider name="period"[(ngModel)]="credit.period" thumbLabel [displayWith]="formatLabel" value="{{credit.period}}" tickInterval="1" step="1" color="warn" class="form-control-range w-100 rounded mt-2 " style="background-color: #9DC88D " min="2" max="50" aria-label="units"></mat-slider>    </div>
 
       <div class="form-group">
-        <label >interestRate </label>
-        <input name="interestRate" type="text" [(ngModel)]="credit.interestRate"  value="{{credit.interestRate}}" class="form-control " />
-        <input type="range" class="form-control" [(ngModel)]="credit.interestRate" name="interestRate" placeholder="2">
-      </div>
-      <div class="form-group">
-        <label >period </label>
-        <input name="period" type="text" [(ngModel)]="credit.period"  value="{{credit.period}}" class="form-control " />
-        <input type="range" class="form-control" [(ngModel)]="credit.period" name="period" placeholder="2">
-      </div>
+        <label >InterestRate </label>
+        <div class="row">
+        <div class="input-group col-4 offset-8">
+          <input name="interestRate" type="text" [(ngModel)]="credit.interestRate"  value="{{credit.interestRate}}" class="form-control " />
+          <div class="input-group-append">
+            <div class="input-group-text"><i class="font-weight-bold" >%</i></div>
+          </div>
+        </div>
+        </div>
+        <mat-slider name="interestRate" [(ngModel)]="credit.interestRate" thumbLabel [displayWith]="formatLabel" value="{{credit.interestRate}}" tickInterval="1" step="1" color="warn" class="form-control-range w-100 rounded mt-2 " style="background-color: #9DC88D " min="1" max="20" aria-label="units"></mat-slider>      </div>
+
 
     <br>
-
-    <button type="submit" class="btn btn-primary" (click)="simulate()">Add</button>
+<div class="align-items-end">
+    <button type="submit" class="btn  col "  style="background-color: #cddc39" (click)="simulate()">Simulation</button>
+</div>
   </form>
 </div>
 
-  <div class="col  bg-info">
-    <h1>RESULT</h1>
-    <br>
-    <table class="table">
-      <tr>
-      <td>Amount</td>
-      <td>
-        {{credit.amount}}
-      </td>
-      <tr>
-      <td>interestRate</td>
-      <td>
-    {{credit.interestRate}}
-      </td>
-    </tr>
-      <tr>
-      <td>Perid</td>
-      <td>
-        {{credit.period}}
-      </td>
-      <tr>
-      <td> Mounthy Payement </td>
-      <td>
-    {{resalt.monthlyPayment}}
-      </td>
-      </tr>
+  <div class="col-5" style="background-color:  #9DC88D">
+    <h1 class="text-white ">RESULT</h1>
+    <hr style="width: 50px; color: white; margin-left: 0px; border: white solid  1px">
+    <div class="container">
+    <div class="row bg-white mb-5 ml-2 mr-2 border rounded  align-items-center" style=" height: 60px">
+      <div class="col ">
+        <h5 class="text-uppercase text-lightblue "  >
+        Amount :
+        </h5>
+      </div>
+      <div class="col">
+        <h5 class="text-uppercase text-s  "  >
 
-    </table>
+        {{credit.amount}} DTN
+        </h5>
+      </div>
+    </div>
+      <div class="row bg-white mb-5 ml-2 mr-2 border rounded  align-items-center" style=" height: 60px">
+        <div class="col">
+          <h5 class="text-uppercase text-lightblue "  >
+
+          InterestRate :
+          </h5>
+        </div>
+        <div class="col ">
+          <h5 class="text-uppercase text-s  "  >
+          {{credit.interestRate}} %
+          </h5>
+        </div>
+      </div>
+      <div class="row bg-white mb-5 ml-2 mr-2 border rounded  align-items-center" style=" height: 60px">
+        <div class="col">
+          <h5 class="text-uppercase text-lightblue "  >
+
+          Peride :
+          </h5>
+        </div>
+        <div class="col">
+          <h5 class="text-uppercase text-s  "  >
+          {{credit.period}} YEAR
+          </h5>
+        </div>
+      </div>
+      <div class="row bg-white mb-5 ml-2 mr-2 border rounded  align-items-center" style=" height: 60px">
+        <div class="col">
+          <h5 class="text-uppercase text-lightblue "  >
+
+          Monthly Payment :
+          </h5>
+        </div>
+        <div class="col">
+          <h5 class="text-uppercase text-s  "  >
+          {{resalt.monthlyPayment}} DTN
+          </h5>
+        </div>
+      </div>
+    </div>
+    <div class="row  mb-5 ml-2 mr-2  align-items-center" style=" height: 60px">
+      <div class="col-12">
+        <button  class=" btn  w-100 mt-4 "  style="background-color: #cddc39"  (click)="generatePDF()">Generate PDF <i class="fa fa-file-pdf"></i></button>
+
+      </div>
+
   </div>
   </div>
+  </div>
 
+  </div>

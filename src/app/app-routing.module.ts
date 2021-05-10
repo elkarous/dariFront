@@ -19,7 +19,6 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
-  { path: 'unitprice', component: UnitpriceComponent},
   { path: 'home', component: HomeComponent ,children:[
       { path: 'simulation', component: SimulationComponent },
       { path: 'simulationByBank', component: SimulationByBankComponent },

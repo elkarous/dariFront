@@ -15,6 +15,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 
 import { ToastrModule } from 'ngx-toastr';
+
 import { UnitpriceComponent } from './Estimation Repository/unitprice/unitprice.component';
 import {FooterComponent} from './Template/footer/footer.component';
 import { HeaderComponent } from './Template/header/header.component';
@@ -30,7 +31,7 @@ import { UpdateOffreComponent } from './Bank Repository/update-offre/update-offr
 import { UpdateUnitPriceComponent } from './Estimation Repository/update-unit-price/update-unit-price.component';
 import { CarouselComponent } from './Template/carousel/carousel.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-
+import { MorrisJsModule } from 'angular-morris-js';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -48,6 +49,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {JwtInterceptor} from './services/jwt.interceptor';
 import { DashHomeComponent } from './dash-home/dash-home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
+import {MatSliderModule} from '@angular/material/slider';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,7 +87,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
         apiKey: 'AIzaSyDv5u_OALswypmlrUjYjbVveEVxrojt7EE',
         libraries: ['places']
       }),
-
+      MorrisJsModule,
+      MatSliderModule,
       ToastrModule,
       BrowserAnimationsModule, // required animations module
       ToastrModule.forRoot(),
