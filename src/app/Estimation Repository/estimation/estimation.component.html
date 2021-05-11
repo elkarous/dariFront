@@ -1,4 +1,5 @@
-<div class="container " style="background-color:#F1B24A ">
+<div class="container " >
+  <mat-card style="background-color:#F1B24A ; color: white ">
   <form class="m-3" >
 
       <div class="form-group">
@@ -83,39 +84,34 @@
 
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"(click)="estimation()">Estimate
-    </button>
+<div class="row">
+      <button type="button" class="btn col text-white w-25" style="background-color:#9DC88D " (click)="estimation()">Estimate
+      </button>
+<div class="col">
+    <div >
 
+      <table class="table">
+        <tbody>
+<tr *ngFor="let value of resulat.keys()">
+          <td>{{value}}</td>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="background-color: ">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">ESTIMATION RESULT</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div *ngFor="let value of resulat.keys()">
+          <td> {{resulat.get(value)}}</td>
+</tr>
 
-              {{value}}{{resulat.get(value)}}
-            </div>
-          </div>
-          <div class="modal-footer">
-
-
-          </div>
-        </div>
-      </div>
+        </tbody>
+      </table>
     </div>
+
+    </div>
+
+
+
+
+</div>
+
   </form>
-
+  </mat-card>
 
 </div>
 
-<div *ngFor="let value of resulat.keys()">
 
-  {{value}}{{resulat.get(value)}}
-</div>

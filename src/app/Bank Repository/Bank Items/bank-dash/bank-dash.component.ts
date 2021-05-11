@@ -39,9 +39,21 @@ export class BankDashComponent implements OnInit {
   }
   delete(bank){
 
-    this.bankservice.delete(bank.id).subscribe();
+    this.bankservice.delete(bank.id).subscribe(date=>{
+        this.toastr.success('Bank Deleted', 'notification',{
+          timeOut: 3000,
+          positionClass: 'toast-bottom-left'
+        });
+    },
+    err=>this.toastr.error(
+      `Erreur`,
+      'can not delete!',
+      {
+        timeOut: 3000,
+        positionClass: 'toast-bottom-left'
+      }));
     this.bankservice.getAll().subscribe()
-    this.toastr.success('Bank Deleted', 'notification');
+
 
   }
   getOffres(bankcli:Bank){
