@@ -26,6 +26,11 @@ export class BankServiceService {
       catchError(this.errorHandler))
 
   }
+  getBankName(): Observable<string[]> {
+    return this.http.get<string[]>(this.apiServer + 'getAllBankByNames') .pipe(
+      catchError(this.errorHandler))
+
+  }
   create(bank:Bank): Observable<Bank> {
     return this.http.post<Bank>(this.apiServer + 'addBank',JSON.stringify(bank) ,this.httpOptions)
       .pipe(

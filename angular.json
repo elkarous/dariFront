@@ -48,9 +48,12 @@
               "node_modules/admin-lte/plugins/summernote/summernote-bs4.css"
             ],
             "scripts": [
+
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/jquery/dist/jquery.slim.js",
               "node_modules/popper.js/dist/umd/popper.min.js",
               "node_modules/admin-lte/plugins/jquery/jquery.js",
-              "node_modules/jquery/dist/jquery.slim.js",
+
               "node_modules/raphael/raphael.js",
               "node_modules/morris.js/morris.js",
               "node_modules/bootstrap/dist/js/bootstrap.js",

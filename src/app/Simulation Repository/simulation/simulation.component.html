@@ -1,9 +1,9 @@
-<div class=" container mt-5" >
+<div class=" container " >
   <div class="row mb-0" >
-<div class="col-7  text-white text-uppercase" style="background-color: #4D774E">
+<div class="col-6  text-white text-uppercase" style="background-color: #4D774E">
   <h1 class="mt-2 ">SIMULATOR OF CREDIT </h1>
   <hr style="width: 50px; color: white; margin-left: 0px; border: white solid  1px">
-  <form class="m-3"#unitForm="ngForm">
+  <form class="m-3"#unitForm="ngForm" ngForm (ngSubmit)="simulate()">
     <div class="form-group  ">
 
     <label class="text-white text-uppercase " >Amount</label>
@@ -50,13 +50,13 @@
 
 
     <br>
-<div class="align-items-end">
-    <button type="submit" class="btn  col "  style="background-color: #cddc39" (click)="simulate()">Simulation</button>
+<div class="align-items-end mt-5">
+    <button type="submit" class="btn  col " style="background-color: #cddc39" (click)="simulate()">Simulation</button>
 </div>
   </form>
 </div>
 
-  <div class="col-5" style="background-color:  #9DC88D">
+  <div class="col-6" style="background-color:  #9DC88D">
     <h1 class="text-white ">RESULT</h1>
     <hr style="width: 50px; color: white; margin-left: 0px; border: white solid  1px">
     <div class="container">
@@ -112,10 +112,23 @@
           </h5>
         </div>
       </div>
+      <div class="row bg-white mb-5 ml-2 mr-2 border rounded  align-items-center" style=" height: 60px">
+        <div class="col">
+          <h5 class="text-uppercase text-lightblue "  >
+
+            TOTAL COST OF CREDIT :
+          </h5>
+        </div>
+        <div class="col">
+          <h5 class="text-uppercase text-s  "  >
+            {{resalt.total}} DTN
+          </h5>
+        </div>
+      </div>
     </div>
     <div class="row  mb-5 ml-2 mr-2  align-items-center" style=" height: 60px">
       <div class="col-12">
-        <button  class=" btn  w-100 mt-4 "  style="background-color: #cddc39"  (click)="generatePDF()">Generate PDF <i class="fa fa-file-pdf"></i></button>
+        <button  class=" btn  w-100 mt-3 "  style="background-color: #cddc39"  (click)="generatePDF()">Generate PDF <i class="fa fa-file-pdf"></i></button>
 
       </div>
 

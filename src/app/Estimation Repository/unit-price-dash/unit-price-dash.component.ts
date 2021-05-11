@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 import {EstimationServiceService} from '../../services/estimation-service.service';
 import {Unitprice} from '../../shered/model/unitprice';
-import {LoginComponent} from '../../login/login.component';
+import {LoginComponent} from '../../Template/login/login.component';
 import {MatDialog} from '@angular/material/dialog';
 import {UnitpriceComponent} from '../unitprice/unitprice.component';
 import {ToastrService} from 'ngx-toastr';
-import {BankUpateComponent} from '../../Bank Repository/bank-upate/bank-upate.component';
+import {BankUpateComponent} from '../../Bank Repository/Bank Items/bank-upate/bank-upate.component';
 import {UpdateUnitPriceComponent} from '../update-unit-price/update-unit-price.component';
 
 @Component({

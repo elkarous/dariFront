@@ -1,6 +1,14 @@
+<div class="container pt-3 align-items-center mt-4 mb-4 " >
+<mat-card class="text-white w-100" >
+  <mat-card-header class="pt-3" style="background-color:#4D774E ;">
+    <mat-card-title>
+      SING IN
+    </mat-card-title>
+  </mat-card-header>
 
-<div class="row mt-5">
-  <div class="col-md-6 mx-auto">
+  <mat-card-content  class="p-3" style="background-color:#9DC88D ">
+
+
     <form [formGroup]="loginForm" (ngSubmit)="signIn()">
 
 
@@ -47,7 +55,15 @@
         </div>
       </div>
 
-      <button [disabled]="loginForm.invalid" class="btn btn-primary btn-block">Sign In</button>
-    </form>
+<mat-card-actions  >
+  <div class="row ">
+      <button [disabled]="loginForm.invalid" mat-dialog-close (click)="signIn()" style="background-color: #F1B24A; color: white " class="btn col-4 offset-7 ">SING IN</button>
   </div>
+</mat-card-actions>
+
+    </form>
+
+
+  </mat-card-content>
+</mat-card>
 </div>

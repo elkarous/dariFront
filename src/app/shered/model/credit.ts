@@ -4,4 +4,5 @@ export class Credit{
  period:number;
   monthlyPayment:number;
   interestRate:number;
+  total:number;
 }

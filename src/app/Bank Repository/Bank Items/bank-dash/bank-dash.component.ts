@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Bank} from '../../shered/model/bank';
-import {BankOffres} from '../../shered/model/bankOffres';
-import {BankServiceService} from '../../services/bank-service.service';
-import {LoginComponent} from '../../login/login.component';
+import {Bank} from '../../../shered/model/bank';
+import {BankOffres} from '../../../shered/model/bankOffres';
+import {BankServiceService} from '../../../services/bank-service.service';
+import {LoginComponent} from '../../../Template/login/login.component';
 import {BankAddComponent} from '../bank-add/bank-add.component';
 import {MatDialog} from '@angular/material/dialog';
 import {ToastrService} from 'ngx-toastr';
@@ -38,13 +38,15 @@ export class BankDashComponent implements OnInit {
     )
   }
   delete(bank){
+
     this.bankservice.delete(bank.id).subscribe();
-    this.getAll();
+    this.bankservice.getAll().subscribe()
     this.toastr.success('Bank Deleted', 'notification');
 
   }
   getOffres(bankcli:Bank){
-    this.router.navigate(["/dashboard/bankDash/bankOffre",bankcli.name,bankcli.id])
+    this.router.navigate(["/dashboard/bankOffre",bankcli.name,bankcli.id])
+
   }
   openDialog() {
     const dialogRef = this.dialog.open(BankAddComponent,{

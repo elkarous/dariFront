@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Bank } from '../../shered/model/bank';
-import { BankOffres } from '../../shered/model/bankOffres';
-import { BankServiceService } from '../../services/bank-service.service';
+import { Bank } from '../../../shered/model/bank';
+import { BankOffres } from '../../../shered/model/bankOffres';
+import { BankServiceService } from '../../../services/bank-service.service';
 import {ToastrService} from 'ngx-toastr';
 import {ActivatedRoute} from '@angular/router';
-import {BankAddComponent} from '../bank-add/bank-add.component';
+import {BankAddComponent} from '../../Bank Items/bank-add/bank-add.component';
 import {MatDialog} from '@angular/material/dialog';
 import {AddOffreComponent} from '../add-offre/add-offre.component';
 import {UpdateOffreComponent} from '../update-offre/update-offre.component';
@@ -28,7 +28,9 @@ id: number = +this.param;
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.snapshot.paramMap.get("name");
 this.name=this.route.snapshot.paramMap.get("name") ;
+
     this.getOffer();
   }
 getOffer(){
@@ -44,7 +46,10 @@ delete(offre:BankOffres) {
   this.getOffer();
 }
   openDialog( ) {
-    const dialogRef = this.dialog.open(AddOffreComponent,{data:this.id
+    const dialogRef = this.dialog.open(AddOffreComponent,{
+      height:"500px",
+      width:"700px",
+      data:this.id
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -54,7 +59,10 @@ delete(offre:BankOffres) {
 
   }
   openDialogUpdate(offer:BankOffres ) {
-    const dialogRef = this.dialog.open(UpdateOffreComponent,{data:offer
+    const dialogRef = this.dialog.open(UpdateOffreComponent,{
+      height:"500px",
+      width:"700px",
+      data:offer
     });
 
     dialogRef.afterClosed().subscribe(result => {

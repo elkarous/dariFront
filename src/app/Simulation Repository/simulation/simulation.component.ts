@@ -1,4 +1,4 @@
-import {Component, OnInit, } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild,} from '@angular/core';
 import {Credit} from '../../shered/model/credit';
 import {SimulationServiceService} from '../../services/simulation-service.service';
 import {jsPDF} from 'jspdf';
@@ -15,19 +15,22 @@ import * as jspdf from 'jspdf';
   styleUrls: ['./simulation.component.scss']
 })
 export class SimulationComponent implements OnInit {
+
   credit:Credit={
     creditId:1,
     amount:1000,
     period:20,
     interestRate:7,
-    monthlyPayment:0
+    monthlyPayment:0,
+    total:0
   }
   resalt:Credit={
     creditId:1,
     amount:1000,
     period:20,
     interestRate:7,
-    monthlyPayment:7.752
+    monthlyPayment:7.752,
+    total:0
   }
   name:string;
   title = 'htmltopdf';
@@ -39,7 +42,8 @@ export class SimulationComponent implements OnInit {
 
   ngOnInit(): void {
     this.credit
-    this.formatLabel
+    this.formatLabel;
+    this.simulate()
   }
   generatePDF() {
     var data = document.getElementById('contentToConvert');
@@ -62,6 +66,7 @@ export class SimulationComponent implements OnInit {
     this.simulationService.simulationByIr(this.credit).subscribe((res:Credit) => {
       console.log(res);
       this.resalt=res;
+
 
 
     });

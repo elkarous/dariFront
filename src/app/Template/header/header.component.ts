@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import {LoginComponent} from '../../login/login.component';
+import {LoginComponent} from '../login/login.component';
 
 @Component({
   selector: 'app-header',
@@ -20,5 +20,5 @@ export class HeaderComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
-login(){}
+
 }

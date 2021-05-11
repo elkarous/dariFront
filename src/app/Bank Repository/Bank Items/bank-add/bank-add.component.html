@@ -1,5 +1,5 @@
-<div class="container " style="width:500px">
-  <h1>Add Bank </h1>
+<div class="container rounded p-2 text-white " style="width:500px ;background-color: #4D774E ">
+<h1>Add Bank </h1>
   <hr>
   <form class="m-3"#unitForm="ngForm">
       <div class="form-group ">
@@ -19,8 +19,8 @@
       </div>
     <hr>
     <mat-dialog-actions align="end">
-      <button mat-button mat-dialog-close>Cancel</button>
-    <button type="submit" class="btn btn-primary" [mat-dialog-close]="true"  (click)="add()">Add</button>
+      <button mat-button mat-dialog-close class="btn btn-secondary">Cancel</button>
+      <button type="submit" class="btn ml-1" style="background-color:#f1b24a " [mat-dialog-close]="true" (click)="add()">Confirm</button>
     </mat-dialog-actions>
   </form>
 </div>

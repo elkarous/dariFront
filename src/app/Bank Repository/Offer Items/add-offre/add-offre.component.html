@@ -1,5 +1,6 @@
-<div class="container ">
-  <form class="m-3"#unitForm="ngForm">
+<div class="container rounded p-2 text-white " style=" ;background-color: #4d774e ">
+  <h3>ADD OFFER</h3>
+<form class="m-3"#unitForm="ngForm">
     <div class="form-group ">
       <label >Name</label>
       <input name="name" [(ngModel)]="offre.nameBankoffer" class="form-control" >
@@ -30,7 +31,10 @@
 
 
 
-    <button type="submit" class="btn btn-primary" (click)="add()">Add</button>
-  </form>
+  <hr>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close class="btn btn-secondary">Cancel</button>
+    <button type="submit" class="btn ml-1" style="background-color:#f1b24a " [mat-dialog-close]="true" (click)="add()">Confirm</button>
+  </mat-dialog-actions>  </form>
 </div>
 

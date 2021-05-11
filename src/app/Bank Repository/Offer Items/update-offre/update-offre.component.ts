@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {BankOffres} from '../../shered/model/bankOffres';
-import {BankServiceService} from '../../services/bank-service.service';
+import {BankOffres} from '../../../shered/model/bankOffres';
+import {BankServiceService} from '../../../services/bank-service.service';
 import {ToastrService} from 'ngx-toastr';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 

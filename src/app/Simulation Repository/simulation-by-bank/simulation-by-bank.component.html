@@ -1,47 +1,57 @@
-<div class="container">
+<div class="container text-white" style="background-color:#4D774E  ">
 <div class="row mb-0" >
-  <div class="col bg-light">
+  <div class="col ">
     <h1 class="mt-2">SIMULATOR OF CREDIT </h1>
     <br>
-    <form #unitForm="ngForm">
-      <div class="form-group ">
-        <label >Bank</label>
-        <select name="name" [(ngModel)]="name" class=" form-control form-select" >
-          <option selected>Stb</option>
-          <option>atb</option>
-          <option>uib</option>
-        </select>
-      </div>
 
-        <div class="form-group ">
 
-          <label >amount</label>
+      <form class="m-3"#unitForm="ngForm" >
+        <div class="form-group  ">
+            <label >Bank</label>
+            <select name="name" [(ngModel)]="name" class=" form-control form-select" >
+              <option disabled selected> --Select Bank Name--</option>
+              <option *ngFor="let name of names">{{name}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+          <label class="text-white text-uppercase " >Amount</label>
+          <div class="row">
+            <div class="input-group   col-4 offset-8" >
 
-          <div class="input-group">
-            <input name="amount" type="text" [(ngModel)]="credit.amount"  value="{{credit.amount}}" class="form-control " />
-            <div class="input-group-append">
-              <div class="input-group-text"><i class="font-weight-bold" >DT</i></div>
+              <input name="amount" type="text" [(ngModel)]="credit.amount"  value="{{credit.amount}}" class="form-control   " />
+              <div class="input-group-append   " >
+                <div class="input-group-text"><i class="font-weight-bold" >DTN</i></div>
+              </div>
             </div>
           </div>
-          <input name="amount" type="range" [(ngModel)]="credit.amount"  min="1000" max="1000000" class="form-control" />
-        </div>
 
 
-      <div class="form-group">
-        <label >period </label>
-        <div class="input-group">
-          <input name="period" type="text" [(ngModel)]="credit.period"  value="{{credit.period}}" class="form-control " />
-          <div class="input-group-append">
-            <div class="input-group-text"><i class="font-weight-bold" >YEAR</i></div>
+          <mat-slider name="amount" [(ngModel)]="credit.amount" thumbLabel [displayWith]="formatLabel" value="{{credit.amount}}" tickInterval="100" step="100" color="warn" class="form-control-range w-100 rounded mt-2 " style="background-color: #9DC88D " min="999" max="100000" aria-label="units"></mat-slider>
           </div>
+
+
+
+
+        <div class="form-group">
+          <label >Period </label>
+          <div class="row">
+            <div class="input-group col-4 offset-8">
+              <input name="period" type="text" [(ngModel)]="credit.period"  value="{{credit.period}}" class="form-control " />
+              <div class="input-group-append">
+                <div class="input-group-text"><i class="font-weight-bold" >YEAR</i></div>
+              </div>
+            </div>
+          </div>
+          <mat-slider name="period" [(ngModel)]="credit.period" thumbLabel [displayWith]="formatLabel" value="{{credit.period}}" tickInterval="1" step="1" color="warn" class="form-control-range w-100 rounded mt-2 " style="background-color: #9DC88D " min="2" max="50" aria-label="units"></mat-slider>    </div>
+
+
+
+        <br>
+        <div class="align-items-end">
+          <button type="submit" class="btn  col "  style="background-color: #cddc39" (click)="simulate()">Simulation</button>
         </div>
-        <input type="range" class="form-control" [(ngModel)]="credit.period" name="period" placeholder="2">
-      </div>
+      </form>
 
-      <br>
-
-      <button type="submit" class="btn btn-primary" (click)="simulate()">Simulate</button>
-    </form>
   </div>
 
 </div>

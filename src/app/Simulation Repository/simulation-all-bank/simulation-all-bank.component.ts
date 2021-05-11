@@ -17,7 +17,8 @@ export class SimulationAllBankComponent implements OnInit {
     amount:1000,
     period:20,
     interestRate:7,
-    monthlyPayment:0
+    monthlyPayment:0,
+    total :0
   }
   resalt:Credit;
   name:string;
@@ -47,6 +48,13 @@ this.myMap= new Map(Object.entries(myMap));
       console.log(`Dialog result: ${result}`);
 
     })
+  }
+  formatLabel(value: number) {
+    if (value >= 1000) {
+      return Math.round(value / 1000) + 'k';
+    }
+    else return value;
+
   }
 
 }
