@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatDialogModule} from '@angular/material/dialog';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BankComponent } from './Bank Repository/Bank Items/bank/bank.component';
+
 import { BankoffreComponent } from './Bank Repository/Offer Items/bankoffre/bankoffre.component';
 import { EstimationComponent } from './Estimation Repository/estimation/estimation.component';
 import { HomeComponent } from './Template/home/home.component';
@@ -42,8 +42,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import {AgmCoreModule} from '@agm/core';
-import { GooglePlaceModule } from "ngx-google-places-autocomplete";
-import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
+
 import { ChartResultComponent } from './Simulation Repository/chart-result/chart-result.component';
 import { DashboardComponent } from './Dashboard Repository/dashboard/dashboard.component';
 import {JwtInterceptor} from './services/jwt.interceptor';
@@ -57,7 +56,6 @@ import { OurServiceComponent } from './Template/our-service/our-service.componen
 @NgModule({
   declarations: [
     AppComponent,
-    BankComponent,
     BankoffreComponent,
     EstimationComponent,
     FooterComponent,
@@ -83,8 +81,7 @@ import { OurServiceComponent } from './Template/our-service/our-service.componen
     OurServiceComponent
   ],
     imports: [
-      MatGoogleMapsAutocompleteModule,
-      GooglePlaceModule,
+
       AgmCoreModule.forRoot({
         apiKey: 'AIzaSyDv5u_OALswypmlrUjYjbVveEVxrojt7EE',
         libraries: ['places']
@@ -103,6 +100,7 @@ import { OurServiceComponent } from './Template/our-service/our-service.componen
       FormsModule,
       FontAwesomeModule,
       LayoutModule,
+
       MatToolbarModule,
       MatButtonModule,
       MatSidenavModule,

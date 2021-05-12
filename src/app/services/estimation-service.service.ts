@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/internal/operators/catchError';
+import { catchError } from 'rxjs/operators';
 import { House } from '../shered/model/house';
 import { Unitprice } from '../shered/model/unitprice';
 import {Bank} from '../shered/model/bank';

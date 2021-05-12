@@ -4,7 +4,7 @@ import {BankoffreComponent} from './Bank Repository/Offer Items/bankoffre/bankof
 import {HomeComponent} from './Template/home/home.component';
 import {SimulationComponent} from './Simulation Repository/simulation/simulation.component';
 import {EstimationComponent} from './Estimation Repository/estimation/estimation.component';
-import {BankComponent} from './Bank Repository/Bank Items/bank/bank.component';
+
 
 import {SimulationByBankComponent} from './Simulation Repository/simulation-by-bank/simulation-by-bank.component';
 import {SimulationAllBankComponent} from './Simulation Repository/simulation-all-bank/simulation-all-bank.component';
@@ -26,7 +26,6 @@ const routes: Routes = [
       { path: 'simulationByBank', component: SimulationByBankComponent },
       { path: 'simulationAllBank', component: SimulationAllBankComponent },
       { path: 'estimation', component: EstimationComponent},
-      { path: 'bank', component: BankComponent}
       ]},
     ]},
 

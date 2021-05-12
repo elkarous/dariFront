@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Unitprice} from '../shered/model/unitprice';
 import {Observable, throwError} from 'rxjs';
-import {catchError} from 'rxjs/internal/operators/catchError';
-import {House} from '../shered/model/house';
+import {catchError} from 'rxjs/operators';
+
 import {User} from '../shered/model/user';
 
 @Injectable({

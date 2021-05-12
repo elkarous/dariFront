@@ -14,7 +14,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
   openDialog() {
-    const dialogRef = this.dialog.open(LoginComponent);
+    const dialogRef = this.dialog.open(LoginComponent,{
+      width:'600px'
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

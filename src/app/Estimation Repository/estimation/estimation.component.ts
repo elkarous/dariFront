@@ -15,7 +15,7 @@ export class EstimationComponent implements OnInit {
   resulat=new Map();
   house: House;
   constructor( private estimationservise: EstimationServiceService ) { }
-  municipals=String["select"]
+  municipals :String[]=["select"]
   ngOnInit(): void {
     this.house = new House();
     this.house.adress=new Adresse();

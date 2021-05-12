@@ -1,54 +1,72 @@
-<div class="container text-white" style="background-color: #164A41">
+<mat-card class=" text-white" style="background-color:#0BCDE3">
 <div class="row mb-0" >
   <div class="col ">
     <h1 class="mt-2">SIMULATOR OF CREDIT </h1>
     <br>
     <form #unitForm="ngForm">
 
-
       <div class="form-group">
-        <label class="text-white text-uppercase " >Amount</label>
-        <div class="row">
-          <div class="input-group   col-4 offset-8" >
+      <div class="row">
+        <label class="text-white text-uppercase col-3 " >Amount</label>
+        <div class="input-group   col-4 offset-5" >
 
-            <input name="amount" type="text" [(ngModel)]="credit.amount"  value="{{credit.amount}}" class="form-control   " />
-            <div class="input-group-append   " >
-              <div class="input-group-text"><i class="font-weight-bold" >DTN</i></div>
-            </div>
+          <input name="amount" type="text" [(ngModel)]="credit.amount"  value="{{credit.amount}}" class="form-control   " />
+          <div class="input-group-append   " >
+            <div class="input-group-text"><i class="font-weight-bold" >DTN</i></div>
           </div>
         </div>
-
-
-        <mat-slider name="amount" [(ngModel)]="credit.amount" thumbLabel [displayWith]="formatLabel" value="{{credit.amount}}" tickInterval="100" step="100" color="warn" class="form-control-range w-100 rounded mt-2 " style="background-color: #9DC88D " min="999" max="100000" aria-label="units"></mat-slider>
       </div>
 
 
+      <mat-slider name="amount" [(ngModel)]="credit.amount" thumbLabel [displayWith]="formatLabel" value="{{credit.amount}}" tickInterval="100" step="100" color="accent" class="form-control-range w-100 rounded mt-2 " style="background-color: #ffffff " min="999" max="100000" aria-label="units"></mat-slider>
+
+  </div>
 
 
-      <div class="form-group">
-        <label >Period </label>
-        <div class="row">
-          <div class="input-group col-4 offset-8">
-            <input name="period" type="text" [(ngModel)]="credit.period"  value="{{credit.period}}" class="form-control " />
-            <div class="input-group-append">
-              <div class="input-group-text"><i class="font-weight-bold" >YEAR</i></div>
-            </div>
-          </div>
+
+  <div class="form-group">
+
+    <div class="row mt-5">
+      <label  class="col-3">Period </label>
+      <div class="input-group col-4 offset-5">
+        <input name="period" type="text" [(ngModel)]="credit.period"  value="{{credit.period}}" class="form-control " />
+        <div class="input-group-append">
+          <div class="input-group-text"><i class="font-weight-bold" >YEAR</i></div>
         </div>
-        <mat-slider name="period" [(ngModel)]="credit.period" thumbLabel [displayWith]="formatLabel" value="{{credit.period}}" tickInterval="1" step="1" color="warn" class="form-control-range w-100 rounded mt-2 " style="background-color: #9DC88D " min="2" max="50" aria-label="units"></mat-slider>    </div>
+      </div>
+    </div>
+    <mat-slider name="period"[(ngModel)]="credit.period" thumbLabel [displayWith]="formatLabel" value="{{credit.period}}" tickInterval="1" step="1" color="accent" class="form-control-range w-100 bg-white rounded mt-2 "  min="2" max="50" aria-label="units"></mat-slider>    </div>
 
 
+  <br> <br>
 
-      <br>
-
-      <button type="submit" class="btn  col mb-3 " style="background-color: #cddc39" (click)="simulate()">Simulation</button>
+  <div class="align-items-end m-5">
+    <button type="submit" class="btn text-white   col " style="background-color: #0BCDE3" (click)="simulate()">SIMULATE</button>
+  </div>
     </form>
   </div>
 
 
   </div>
+</mat-card>
+<div *ngIf="show">
+<div class="card card-primary card-outline" >
+  <div class="card-header">
+    <h3 class="card-title">
+      <i class="far fa-chart-bar"></i>
+      SIMULATION
+    </h3>
+
+    <div class="card-tools">
+      <button type="button" class="btn btn-tool "  mat-dialog-close data-card-widget="remove">
+        <i class="fas fa-window-close fa-2x"></i>
+      </button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div id="morris-bar-chart" ></div>
+  </div>
+  <!-- /.card-body-->
 </div>
 
-
-
-
+</div>

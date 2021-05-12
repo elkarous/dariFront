@@ -62,6 +62,8 @@ export class BankDashComponent implements OnInit {
   }
   openDialog() {
     const dialogRef = this.dialog.open(BankAddComponent,{
+      height:"500px",
+      width:"700px",
 
     });
 
@@ -74,6 +76,8 @@ export class BankDashComponent implements OnInit {
   openDialogUpdate(bank){
 
     const dialogRef = this.dialog.open(BankUpateComponent,{
+      height:"500px",
+      width:"700px",
       data:bank
     });
 

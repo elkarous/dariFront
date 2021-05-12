@@ -16,7 +16,7 @@
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
-  <table class="table text-white rounded"style="background-color: #4D774E ;">
+  <table class="table text-dark border border rounded ">
     <thead>
     <tr>
 
@@ -37,13 +37,13 @@
       <td>{{offre.selfFinancing}}</td>
       <td>{{offre.maxCredit}}</td>
       <td>{{offre.period}}</td>
-<td class="w-25" >        <button class="btn ml-2" style="background-color: #F1B24A; color: white "  (click)="openDialogUpdate(offre)">Update</button>
-        <button class="btn btn-danger  ml-2" (click)="delete(offre)">Delete</button></td>
+<td class="w-25" >             <button class="btn  btn-primary ml-2"   (click)="openDialogUpdate(offre)">Update</button>
+  <button class="btn btn-danger  ml-2" (click)="delete(offre)">Delete</button></td>
     </tr>
 
 
   </table>
 
 <div class="row">
-  <button  class=" btn col-3 offset-9" style="background-color: #F1B24A; color: white " (click)="openDialog()">Add Offre </button>
+  <button  class=" btn btn-outline-success col-2 offset-9 "  (click)="openDialog()"><i class="fa fa-plus fa-x mb-0"></i> Add Offer  </button>
 </div>

@@ -12,6 +12,7 @@ import {ChartResultComponent} from '../chart-result/chart-result.component';
 })
 export class SimulationAllBankComponent implements OnInit {
   myMap = new Map();
+  show=false;
   credit:Credit={
     creditId:1,
     amount:1000,
@@ -32,8 +33,10 @@ export class SimulationAllBankComponent implements OnInit {
     this.simulationService.simulationInAllBank(this.credit).subscribe((myMap) => {
       console.log(myMap);
 this.myMap= new Map(Object.entries(myMap));
+this.show=!this.show;
+this.fonction()
 
-     this.open();
+
     });
   }
   open(){
@@ -56,5 +59,29 @@ this.myMap= new Map(Object.entries(myMap));
     else return value;
 
   }
+  fonction() {
+    let dataPoints = [];
+    for ( var value of this.myMap.keys()) {
 
+      dataPoints.push({ y:value ,a:this.myMap.get(value)});
+    }
+    setTimeout(() => {
+      // [ bar-simple ] chart start
+      // @ts-ignore
+      Morris.Bar({
+        element: 'morris-bar-chart',
+        data: dataPoints,
+        xkey: 'y',
+        barSizeRatio: 0.5,
+        barGap: 10,
+        resize: true,
+        responsive: true,
+        ykeys: ['a'],
+        labels: ["Monthly Payement"],
+        barColors: ["#164A41"]
+      });
+
+
+    })
+  }
 }

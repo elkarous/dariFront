@@ -1,14 +1,16 @@
 <div class=" container " >
   <div class="row mb-0" >
-<div class="col-6  text-white text-uppercase" style="background-color: #4D774E">
+<mat-card class="col-6 m-1  text-white text-uppercase" style="background-color:#0B5BE3 ">
   <h1 class="mt-2 ">SIMULATOR OF CREDIT </h1>
   <hr style="width: 50px; color: white; margin-left: 0px; border: white solid  1px">
+  <br>
   <form class="m-3"#unitForm="ngForm" ngForm (ngSubmit)="simulate()">
     <div class="form-group  ">
 
-    <label class="text-white text-uppercase " >Amount</label>
+
 <div class="row">
-    <div class="input-group   col-4 offset-8" >
+  <label class="text-white text-uppercase col-3 " >Amount</label>
+    <div class="input-group   col-4 offset-5" >
 
       <input name="amount" type="text" [(ngModel)]="credit.amount"  value="{{credit.amount}}" class="form-control   " />
       <div class="input-group-append   " >
@@ -18,48 +20,51 @@
     </div>
 
 
-        <mat-slider name="amount" [(ngModel)]="credit.amount" thumbLabel [displayWith]="formatLabel" value="{{credit.amount}}" tickInterval="100" step="100" color="warn" class="form-control-range w-100 rounded mt-2 " style="background-color: #9DC88D " min="999" max="100000" aria-label="units"></mat-slider>
+        <mat-slider name="amount" [(ngModel)]="credit.amount" thumbLabel [displayWith]="formatLabel" value="{{credit.amount}}" tickInterval="100" step="100" color="accent" class="form-control-range w-100 rounded mt-2 " style="background-color: #ffffff " min="999" max="100000" aria-label="units"></mat-slider>
 
   </div>
 
 
 
     <div class="form-group">
-      <label >Period </label>
-      <div class="row">
-      <div class="input-group col-4 offset-8">
+
+      <div class="row mt-5">
+        <label  class="col-3">Period </label>
+      <div class="input-group col-4 offset-5">
         <input name="period" type="text" [(ngModel)]="credit.period"  value="{{credit.period}}" class="form-control " />
         <div class="input-group-append">
           <div class="input-group-text"><i class="font-weight-bold" >YEAR</i></div>
         </div>
       </div>
       </div>
-      <mat-slider name="period"[(ngModel)]="credit.period" thumbLabel [displayWith]="formatLabel" value="{{credit.period}}" tickInterval="1" step="1" color="warn" class="form-control-range w-100 rounded mt-2 " style="background-color: #9DC88D " min="2" max="50" aria-label="units"></mat-slider>    </div>
+      <mat-slider name="period" [(ngModel)]="credit.period" thumbLabel [displayWith]="formatLabel" value="{{credit.period}}" tickInterval="1" step="1" color="accent" class="form-control-range w-100 bg-white rounded mt-2 "  min="2" max="50" aria-label="units"></mat-slider>    </div>
 
       <div class="form-group">
-        <label >InterestRate </label>
-        <div class="row">
-        <div class="input-group col-4 offset-8">
+
+        <div class="row mt-5">
+          <label  class="col-3">InterestRate </label>
+        <div class="input-group col-4 offset-5">
           <input name="interestRate" type="text" [(ngModel)]="credit.interestRate"  value="{{credit.interestRate}}" class="form-control " />
           <div class="input-group-append">
             <div class="input-group-text"><i class="font-weight-bold" >%</i></div>
           </div>
         </div>
         </div>
-        <mat-slider name="interestRate" [(ngModel)]="credit.interestRate" thumbLabel [displayWith]="formatLabel" value="{{credit.interestRate}}" tickInterval="1" step="1" color="warn" class="form-control-range w-100 rounded mt-2 " style="background-color: #9DC88D " min="1" max="20" aria-label="units"></mat-slider>      </div>
+        <mat-slider name="interestRate" [(ngModel)]="credit.interestRate" thumbLabel [displayWith]="formatLabel" value="{{credit.interestRate}}" tickInterval="1" step="1" color="accent" class="form-control-range w-100 rounded mt-2 bg-white "  min="1" max="20" aria-label="units"></mat-slider>      </div>
 
-
-    <br>
+    <br> <br>
+    <p> ldk,ccflkmkmvdmvm  klmkgdm mdgmkmdkf mdfgmkgmd lmkgm kgmkfgdmgklm mlfdmgm msm msmm msms msgmkmskg</p>
 <div class="align-items-end mt-5">
-    <button type="submit" class="btn  col " style="background-color: #cddc39" (click)="simulate()">Simulation</button>
+    <button type="submit" class="btn text-dark   col " style="background-color: #009EFB" (click)="simulate()">SIMULATE</button>
 </div>
   </form>
-</div>
+</mat-card>
 
-  <div class="col-6" style="background-color:  #9DC88D">
+  <mat-card class="col-5 m-1 " id="contentToConvert" style="background-color:  #0BCDE3">
     <h1 class="text-white ">RESULT</h1>
     <hr style="width: 50px; color: white; margin-left: 0px; border: white solid  1px">
-    <div class="container">
+    <br> <br>
+    <div class="container mt-2">
     <div class="row bg-white mb-5 ml-2 mr-2 border rounded  align-items-center" style=" height: 60px">
       <div class="col ">
         <h5 class="text-uppercase text-lightblue "  >
@@ -116,7 +121,7 @@
         <div class="col">
           <h5 class="text-uppercase text-lightblue "  >
 
-            TOTAL COST OF CREDIT :
+            TOTAL COST  :
           </h5>
         </div>
         <div class="col">
@@ -128,12 +133,13 @@
     </div>
     <div class="row  mb-5 ml-2 mr-2  align-items-center" style=" height: 60px">
       <div class="col-12">
-        <button  class=" btn  w-100 mt-3 "  style="background-color: #cddc39"  (click)="generatePDF()">Generate PDF <i class="fa fa-file-pdf"></i></button>
+        <button  class=" btn  w-100 mt-3 "  style="background-color: #009EFB"  >Generate PDF <i class="fa fa-file-pdf"></i></button>
 
       </div>
 
   </div>
-  </div>
+  </mat-card>
   </div>
 
   </div>
+
