@@ -37,8 +37,12 @@
       <td>{{offre.selfFinancing}}</td>
       <td>{{offre.maxCredit}}</td>
       <td>{{offre.period}}</td>
-<td class="w-25" >             <button class="btn  btn-primary ml-2"   (click)="openDialogUpdate(offre)">Update</button>
-  <button class="btn btn-danger  ml-2" (click)="delete(offre)">Delete</button></td>
+<td class="w-25" >
+  <ng-template #tipContent class="tooltip-inner">Edit Bank </ng-template>
+
+  <ng-template #tipdelete class="tooltip-inner">delete  Bank </ng-template>
+  <span [ngbTooltip]="tipContent"> <span class="   text-primary   ml-2"   (click)="openDialogUpdate(offre)"><i class="fas fa-edit fa-2x "></i></span></span>
+  <span [ngbTooltip]="tipdelete" class=" text-danger  ml-2" (click)="delete(offre)"><i class="fas fa-trash-alt fa-2x"></i></span></td>
     </tr>
 
 

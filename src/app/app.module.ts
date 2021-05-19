@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatDialogModule} from '@angular/material/dialog';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import {MatTableModule} from '@angular/material/table';
 import { BankoffreComponent } from './Bank Repository/Offer Items/bankoffre/bankoffre.component';
 import { EstimationComponent } from './Estimation Repository/estimation/estimation.component';
 import { HomeComponent } from './Template/home/home.component';
@@ -12,16 +12,18 @@ import { SimulationComponent } from './Simulation Repository/simulation/simulati
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-
-
+// MDB Angular Pro
+import { WavesModule } from 'angular-bootstrap-md'
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import {MatStepperModule} from '@angular/material/stepper';
 import { ToastrModule } from 'ngx-toastr';
-
+import {MatFormFieldModule} from '@angular/material/form-field';
 import { UnitpriceComponent } from './Estimation Repository/unitprice/unitprice.component';
 import {FooterComponent} from './Template/footer/footer.component';
 import { HeaderComponent } from './Template/header/header.component';
 import { SimulationByBankComponent } from './Simulation Repository/simulation-by-bank/simulation-by-bank.component';
 import { SimulationAllBankComponent } from './Simulation Repository/simulation-all-bank/simulation-all-bank.component';
-
+import { NgbTooltipModule } from "@ng-bootstrap/ng-bootstrap";
 import { BankDashComponent } from './Bank Repository/Bank Items/bank-dash/bank-dash.component';
 import { BankUpateComponent } from './Bank Repository/Bank Items/bank-upate/bank-upate.component';
 import { BankAddComponent } from './Bank Repository/Bank Items/bank-add/bank-add.component';
@@ -30,7 +32,6 @@ import { AddOffreComponent } from './Bank Repository/Offer Items/add-offre/add-o
 import { UpdateOffreComponent } from './Bank Repository/Offer Items/update-offre/update-offre.component';
 import { UpdateUnitPriceComponent } from './Estimation Repository/update-unit-price/update-unit-price.component';
 import { CarouselComponent } from './Template/carousel/carousel.component';
-import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import { MorrisJsModule } from 'angular-morris-js';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -42,7 +43,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import {AgmCoreModule} from '@agm/core';
-
+import {MatTabsModule} from '@angular/material/tabs';
 import { ChartResultComponent } from './Simulation Repository/chart-result/chart-result.component';
 import { DashboardComponent } from './Dashboard Repository/dashboard/dashboard.component';
 import {JwtInterceptor} from './services/jwt.interceptor';
@@ -50,6 +51,10 @@ import { DashHomeComponent } from './Dashboard Repository/dash-home/dash-home.co
 import { PageNotFoundComponent } from './Template/page-not-found/page-not-found.component'
 import {MatSliderModule} from '@angular/material/slider';
 import { OurServiceComponent } from './Template/our-service/our-service.component';
+import {ListFilterPipe} from './shered/pipe';
+import { MdbModule } from 'mdb-angular-ui-kit';
+import { MapsComponent } from './maps/maps.component';
+import { UploadComponent } from './upload/upload.component';
 
 
 
@@ -78,13 +83,17 @@ import { OurServiceComponent } from './Template/our-service/our-service.componen
     DashboardComponent,
     DashHomeComponent,
     PageNotFoundComponent,
-    OurServiceComponent
+    OurServiceComponent,
+    ListFilterPipe,
+    MapsComponent,
+    UploadComponent
   ],
     imports: [
 
       AgmCoreModule.forRoot({
         apiKey: 'AIzaSyDv5u_OALswypmlrUjYjbVveEVxrojt7EE',
-        libraries: ['places']
+        libraries: ['places'],
+
       }),
       MorrisJsModule,
       MatSliderModule,
@@ -98,9 +107,9 @@ import { OurServiceComponent } from './Template/our-service/our-service.componen
       HttpClientModule,
       ReactiveFormsModule,
       FormsModule,
-      FontAwesomeModule,
-      LayoutModule,
 
+      LayoutModule,
+      MatTabsModule,
       MatToolbarModule,
       MatButtonModule,
       MatSidenavModule,
@@ -108,7 +117,14 @@ import { OurServiceComponent } from './Template/our-service/our-service.componen
       MatListModule,
       MatGridListModule,
       MatCardModule,
-      MatMenuModule
+      MatMenuModule,
+      MatStepperModule,
+      MatFormFieldModule,
+      MatTableModule,
+      NgbTooltipModule,
+      MdbModule,
+      WavesModule,
+      MDBBootstrapModule.forRoot(),
     ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

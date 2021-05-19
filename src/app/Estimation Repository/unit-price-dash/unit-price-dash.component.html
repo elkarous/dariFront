@@ -31,16 +31,24 @@
       <td>{{unitprice.minunitprice}}</td>
       <td>{{unitprice.maxunitprice}}</td>
       <td>
-        <button class="btn  ml-2" style="background-color: #F1B24A; color: white "  (click)="openDialogUpdate(unitprice)">Update</button>
-        <button class="btn btn-danger ml-2" (click)="delete(unitprice)">Delete</button></td>
+        <ng-template #tipContent class="tooltip-inner">Edit unit price </ng-template>
+
+        <ng-template #tipdelete class="tooltip-inner">delete unit price </ng-template>
+        <span [ngbTooltip]="tipContent"> <span class="   text-primary   ml-2" (click)="openDialogUpdate(unitprice)"><i
+          class="fas fa-edit fa-2x "></i></span></span>
+        <span [ngbTooltip]="tipdelete" class=" text-danger  ml-2" (click)="delete(unitprice)"><i
+          class="fas fa-trash-alt fa-2x"></i></span></td>
 
     </tr>
     <tr>
 
   </table>
 
+
   <div class="row">
-    <button  class=" btn col-3 offset-9" style="background-color: #F1B24A; color: white " (click)="openDialog()"><i class="fa fa-plus fa-x mb-0"></i> Add Unit Price </button>
+    <button class=" btn btn-outline-success col-2 offset-9 " (click)="openDialog()"><i class="fa fa-plus fa-x mb-0"></i>
+      Add Unit Price
+    </button>
   </div>
 
 

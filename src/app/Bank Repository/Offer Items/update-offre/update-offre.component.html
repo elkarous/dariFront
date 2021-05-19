@@ -1,10 +1,10 @@
-<div class="container rounded p-2 text-gray-dark text-uppercase text-teal " style=" ;background-color: #0BCDE3 ;">
+<div class="container rounded p-2 text-gray-dark text-uppercase text-teal " >
   <h3>UPDATE OFFER</h3>
   <form class="m-3"#unitForm="ngForm">
     <div class="form-group ">
       <label >Name</label>
-      <input name="name" [(ngModel)]="offre.nameBankoffer" value="{{offre.nameBankoffer}}" class="form-control" >
-
+      <input name="name" [(ngModel)]="offre.nameBankoffer" value="{{offre.nameBankoffer}}" class="form-control" required #name="ngModel" >
+<span class="text-danger" *ngIf="name.touched&&name.invalid">name can't be null </span>
     </div>
 
     <div class="form-group">
@@ -33,7 +33,7 @@
     <hr>
     <mat-dialog-actions align="end">
       <button mat-button mat-dialog-close class="btn btn-secondary">Cancel</button>
-      <button type="submit" class="btn ml-1 text-white" style="background-color:#0B5BE3 " [mat-dialog-close]="true" (click)="update()">Confirm</button>
+      <button type="submit" class="btn ml-1 text-white" style="background-color:#0B5BE3 " [mat-dialog-close]="true" [disabled]="unitForm.invalid" (click)="update()">Confirm</button>
     </mat-dialog-actions>  </form>
 </div>
 

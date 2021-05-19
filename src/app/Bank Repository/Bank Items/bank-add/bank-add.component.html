@@ -1,26 +1,47 @@
-<div class="container rounded p-2 text-gray-dark text-uppercase text-teal " style=" ;background-color: #0BCDE3 ;">
+<div class="container rounded p-2 text-gray-dark text-uppercase text-teal " >
   <h1>Add Bank </h1>
   <hr>
-  <form class="m-3"#unitForm="ngForm">
+  <form class="m-3"#unitForm="ngForm" (ngSubmit)="add()">
       <div class="form-group ">
         <label >Name</label>
-        <input name="name" [(ngModel)]="bank.name" class="form-control" >
+        <input name="name" [(ngModel)]="bank.name" class="form-control"  placeholder="name * " required #name="ngModel">
 
-
+<span *ngIf="name.dirty&&name.invalid " class="text-danger"> the name is required</span>
       </div>
 
       <div class="form-group">
         <label >Description </label>
-        <input type="text" class="form-control" [(ngModel)]="bank.description" name="maxunitprice" placeholder="2">
+        <input type="text" class="form-control" [(ngModel)]="bank.description" name="maxunitprice" placeholder="Description">
       </div>
       <div class="form-group">
         <label >Interest Rate  </label>
-        <input type="number" class="form-control" [(ngModel)]="bank.interestRate" name="nbRooms" placeholder="2">
+        <input type="number" class="form-control" [(ngModel)]="bank.interestRate" name="nbRooms" placeholder="%">
       </div>
+    <div class="form-group">
+      <label >web site  </label>
+      <input type="text" class="form-control" [(ngModel)]="bank.interestRate" name="nbRooms" placeholder="web site">
+    </div>
     <hr>
     <mat-dialog-actions align="end">
       <button mat-button mat-dialog-close class="btn btn-secondary">Cancel</button>
-      <button type="submit" class="btn ml-1 text-white" style="background-color:#0B5BE3 " [mat-dialog-close]="true" (click)="add()">Confirm</button>
+      <button type="submit" class="btn ml-1 text-white" style="background-color:#0B5BE3 " [mat-dialog-close]="true" [disabled]="unitForm.invalid">Confirm</button>
     </mat-dialog-actions>
   </form>
 </div>
+-----
+<div class="row">
+  <div class="col-8">
+    <label class="btn btn-default p-0">
+      <input type="file" (input)="upload(file)"  />
+    </label>
+  </div>
+
+  <div class="col-4">
+    <button class="btn btn-success btn-sm"  (click)="upload(file)">
+      Upload
+    </button>
+  </div>
+</div>
+
+
+

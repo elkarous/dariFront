@@ -1,10 +1,12 @@
-<div class="container rounded p-2 text-white " style="width:500px ;background-color: #4d774e ">
-<form class="m-3"#unitForm="ngForm">
+<div class="container rounded p-2 text-dark " >
+  <h5>Add Unit Price </h5>
+  <hr>
+  <form class="m-3"#unitForm="ngForm">
     <div class="form-row">
-      <div class="form-group col-md-4">
+      <div class="form-group ">
         <label >municipal</label>
-        <input type="text" name="municipal" [(ngModel)]="unitprice.municipal" value="{{unitprice.municipal}}" class="form-control" >
-
+        <input type="text" name="municipal" [(ngModel)]="unitprice.municipal" class="form-control" placeholder="municipal" required #municipal="ngModel">
+        <span class="text-danger" *ngIf="municipal.touched&&municipal.invalid"> <i class="fa fa-exclamation-triangle"></i> municipal is required </span>
       </div>
 
     </div>
@@ -12,19 +14,24 @@
 
     <div class="form-row">
       <div class="form-group">
-        <label >maxunitprice </label>
-        <input type="number" class="form-control" [(ngModel)]="unitprice.maxunitprice" value="{{unitprice.maxunitprice}}" name="maxunitprice" placeholder="2">
+        <label >max unit price </label>
+        <input type="number" class="form-control" [(ngModel)]="unitprice.maxunitprice" name="maxunitprice" placeholder="200" required #maxunitprice="ngModel">
+        <span class="text-danger" *ngIf="maxunitprice.touched&&maxunitprice.invalid"> <i class="fa fa-exclamation-triangle"></i> municipal is required </span>
+
       </div>
       <div class="form-group">
-        <label >minunitprice </label>
-        <input type="number" class="form-control" [(ngModel)]="unitprice.minunitprice" value="{{unitprice.minunitprice}}" name="nbRooms" placeholder="2">
+        <label >min unit price </label>
+        <input type="number" class="form-control" [(ngModel)]="unitprice.minunitprice" name="nbRooms" placeholder="100" required  #minunitprice="ngModel">
+        <span class="text-danger" *ngIf="minunitprice.touched&&minunitprice.invalid"> <i class="fa fa-exclamation-triangle"></i> municipal is required </span>
+        <span class="text-danger" *ngIf="minunitprice.value>maxunitprice.value"> <i class="fa fa-exclamation-triangle"></i> min price can't be Greater than max price </span>
+
       </div>
     </div>
-
-  <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close class="btn btn-secondary">Cancel</button>
-    <button type="submit" class="btn ml-1" style="background-color:#f1b24a " [mat-dialog-close]="true" (click)="update()">Confirm</button>
-  </mat-dialog-actions>  </form>
+    <hr>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close class="btn btn-secondary">Cancel</button>
+      <button type="submit" class="btn btn-primary ml-1"  [mat-dialog-close]="true" (click)="update()" [disabled]="unitForm.invalid">Confirm</button>
+    </mat-dialog-actions>
+  </form>
 </div>
-
 

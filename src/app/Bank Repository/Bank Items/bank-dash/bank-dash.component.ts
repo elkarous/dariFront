@@ -8,7 +8,8 @@ import {MatDialog} from '@angular/material/dialog';
 import {ToastrService} from 'ngx-toastr';
 import {BankUpateComponent} from '../bank-upate/bank-upate.component';
 import {Router} from '@angular/router';
-
+import {Observable} from 'rxjs';
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-bank-dash',
   templateUrl: './bank-dash.component.html',
@@ -17,17 +18,21 @@ import {Router} from '@angular/router';
 export class BankDashComponent implements OnInit {
   banktr:Bank;
   banks: Bank[] ;
+
+  url:string;
   name: string;
   offres:BankOffres[];
-
+  file: Observable<any>;
   constructor(private bankservice:BankServiceService,
               private router:Router,
+              private sanitizer:DomSanitizer,
               private readonly dialog: MatDialog,
               private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getAll();
     this.banktr =new Bank();
+    this.file
 
   }
   getAll(){
@@ -37,6 +42,13 @@ export class BankDashComponent implements OnInit {
       }
     )
   }
+  getLogo (bank){
+    this.bankservice.getlogo(bank.logo.id).subscribe(
+      data=>{
+        this.file=data;
+      console.log(data)}
+    );
+}
   delete(bank){
 
     this.bankservice.delete(bank.id).subscribe(date=>{

@@ -14,6 +14,9 @@ import {dateInputsHaveChanged} from '@angular/material/datepicker/datepicker-inp
 export class EstimationComponent implements OnInit {
   resulat=new Map();
   house: House;
+  showadresse=true;
+  showkind=false;
+  show=false;
   constructor( private estimationservise: EstimationServiceService ) { }
   municipals :String[]=["select"]
   ngOnInit(): void {
@@ -23,6 +26,11 @@ export class EstimationComponent implements OnInit {
     this.municipals
     this.getMunicipale()
 
+
+  }
+  next(){
+    this.showadresse=!this.showadresse
+    this.showkind=!this.showkind
 
   }
 getMunicipale(){
@@ -40,6 +48,7 @@ getMunicipale(){
       console.log(data);
       this.resulat=new Map(Object.entries(data));
     } );
+    this.show=true
   }
 
 }

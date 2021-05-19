@@ -5,6 +5,8 @@ import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {Unitprice} from '../../shered/model/unitprice';
 import {ChartResultComponent} from '../chart-result/chart-result.component';
 import {BankServiceService} from '../../services/bank-service.service';
+import {BankOffres} from '../../shered/model/bankOffres';
+import {FormControl, Validators} from '@angular/forms';
 @Component({
   selector: 'app-simulation-by-bank',
   templateUrl: './simulation-by-bank.component.html',
@@ -12,8 +14,9 @@ import {BankServiceService} from '../../services/bank-service.service';
 })
 export class SimulationByBankComponent implements OnInit {
 
+show=false
    myMap = new Map();
-
+listOffer:BankOffres[];
 names:string[]
   credit:Credit={
     creditId:1,
@@ -23,45 +26,68 @@ names:string[]
     monthlyPayment:0,
     total:0
   }
-  name1:string;
+
   name:string;
   constructor( private simulationService:SimulationServiceService,
-               private bankService :BankServiceService
-               , private readonly dialog: MatDialog) { }
+               private bankService :BankServiceService) { }
 
   ngOnInit(): void {
-    this.name1=this.myMap.get(1)
     this.getBankByName()
+
+  }
+
+
+
+
+  getOffers(){
+    this.bankService.getBankOffreByName(this.name).subscribe(data=>{
+      this.listOffer=data
+    })
   }
 getBankByName(){
     this.bankService.getBankName().subscribe(data=>{
       this.names=data;
-      console.log(data)
+
     })
 }
   simulate(){
+    this.show=false;
     this.simulationService.simulatsimulationbybank(this.credit,this.name).subscribe((data) => {
 
       this.myMap = new Map(Object.entries(data));
 
-console.log(this.myMap);
-this.open()
+     this.getOffers()
+      this.fonction()
+      this.show=true;
     });
 
 }
-open(){
-  const dialogRef = this.dialog.open(ChartResultComponent,{
-    height:"500px",
-    width:"900px",
 
-    data:this.myMap
-  });
+  fonction() {
+    let dataPoints = [];
+    for ( var value of this.myMap.keys()) {
 
-  dialogRef.afterClosed().subscribe(result => {
-    console.log(`Dialog result: ${result}`);
+      dataPoints.push({ y:value ,a:this.myMap.get(value)});
+    }
+    setTimeout(() => {
+      // [ bar-simple ] chart start
+      // @ts-ignore
+      Morris.Bar({
+        element: 'morris-bar-chart',
+        data: dataPoints,
+        xkey: 'y',
+        barSizeRatio: 0.5,
+        barGap: 10,
+        resize: true,
+        responsive: true,
+        ykeys: ['a'],
+        labels: ["Monthly Payement"],
+        barColors: ["#009efb"]
+      });
 
-  })
-}
+
+    })
+  }
   formatLabel(value: number) {
     if (value >= 1000) {
       return Math.round(value / 1000) + 'k';
@@ -69,6 +95,7 @@ open(){
     else return value;
 
   }
+
 }
 
 

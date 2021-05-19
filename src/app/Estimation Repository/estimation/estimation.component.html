@@ -1,8 +1,11 @@
 <div class="container " >
-  <mat-card class="bg-success">
+  <mat-card class="bg-white">
   <form class="m-3" >
-
+<div *ngIf="showadresse">
       <div class="form-group">
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
         <label >municipal</label>
         <select name="municipal" [(ngModel)]="house.adress.municipal" class="form-control" >
           <option selected>Raoud</option>
@@ -10,23 +13,48 @@
         </select>
       </div>
 
+    <div class="form-group">
+      <label >City</label>
+      <input  type="text" name="city" [(ngModel)]="house.adress.city" class="form-control" >
 
 
+    </div>
+    <div class="form-group">
+      <label >Governorate</label>
+      <input  type="text" name="gouvernorat" [(ngModel)]="house.adress.gouvernorat" class="form-control" >
+
+    </div>
+    <div class="form-group">
+      <label >Street</label>
+      <input  type="text" name="street" [(ngModel)]="house.adress.street" class="form-control" >
+
+    </div>
+  <button (click)="next()" class="btn btn-secondary">  next </button>
+</div>
+    <div *ngIf="showkind">
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
     <div class="form-group ">
       <label >KindOfGood</label>
-      <select name="kindOfGood" [(ngModel)]="house.kindofgood" class="form-control">
+      <select name="kindOfGood" [(ngModel)]="house.kindofgood" #kind="ngModel" class="form-control">
         <option selected>land</option>
         <option>apartment</option>
         <option>villa</option>
         <option>workshop</option>
       </select>
-    </div>
+
+
 
           <div class="form-group">
             <label >Area </label>
             <input type="number" class="form-control" [(ngModel)]="house.area" name="area" placeholder="2">
           </div>
-
+    </div>
+    <div *ngIf='kind.value=="villa"'>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
            <div class="form-group">
              <label >Rooms </label>
              <input type="number" class="form-control" [(ngModel)]="house.nbRooms" name="nbRooms" placeholder="2">
@@ -36,7 +64,9 @@
                <label >Garages </label>
                <input type="number" class="form-control" [(ngModel)]="house.nbGarage" name="nbGarage" placeholder="2">
              </div>
-
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
 
              <div class="form-group">
                <div class="form-check">
@@ -81,26 +111,15 @@
                     </label>
                   </div>
                 </div>
-
+    </div>
+    </div>
 
     <!-- Button trigger modal -->
 <div class="row">
       <button type="button" class="btn col text-white w-25" style="background-color:#009EFB " (click)="estimation()">Estimate
       </button>
 <div class="col">
-    <div >
 
-      <table class="table">
-        <tbody>
-<tr *ngFor="let value of resulat.keys()">
-          <td>{{value}}</td>
-
-          <td> {{resulat.get(value)}}</td>
-</tr>
-
-        </tbody>
-      </table>
-    </div>
 
     </div>
 
@@ -110,8 +129,22 @@
 </div>
 
   </form>
-  </mat-card>
 
+
+</mat-card>
 </div>
+<mat-card *ngIf="show">
+<div >
 
+  <table class="table">
+    <tbody>
+    <tr *ngFor="let value of resulat.keys()">
+      <td>{{value}}</td>
 
+      <td> {{resulat.get(value)}}</td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+</mat-card>

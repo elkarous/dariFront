@@ -20,7 +20,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies": ["lodash" ,"rxjs-compat"],
+            "allowedCommonJsDependencies": [
+              "lodash",
+              "rxjs-compat"
+            ],
             "outputPath": "dist/dari",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -49,7 +52,6 @@
               "node_modules/admin-lte/plugins/summernote/summernote-bs4.css"
             ],
             "scripts": [
-
               "node_modules/jquery/dist/jquery.js",
               "node_modules/jquery/dist/jquery.slim.js",
               "node_modules/popper.js/dist/umd/popper.min.js",
@@ -57,10 +59,8 @@
               "node_modules/morris.js/morris.js",
               "node_modules/bootstrap/dist/js/bootstrap.js",
               "node_modules/admin-lte/plugins/jquery/jquery.js",
-              "node_modules/admin-lte/dist/js/adminlte.js"
-
-
-
+              "node_modules/admin-lte/dist/js/adminlte.js",
+              "node_modules/chart.js/dist/chart.js"
             ]
           },
           "configurations": {

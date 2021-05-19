@@ -1,145 +1,195 @@
-<div class=" container " >
-  <div class="row mb-0" >
-<mat-card class="col-6 m-1  text-white text-uppercase" style="background-color:#0B5BE3 ">
-  <h1 class="mt-2 ">SIMULATOR OF CREDIT </h1>
-  <hr style="width: 50px; color: white; margin-left: 0px; border: white solid  1px">
-  <br>
-  <form class="m-3"#unitForm="ngForm" ngForm (ngSubmit)="simulate()">
-    <div class="form-group  ">
+<div class="  ">
+
+    <mat-card class="  text-uppercase" style="color:gray ">
+      <h4 class="mt-2 ">SIMULATOR OF CREDIT </h4>
+      <hr style="width: 50px; color: black; margin-left: 0px; border: gray solid  1px">
+      <br>
+      <form class="m-3" #unitForm="ngForm" ngForm (ngSubmit)="simulate()">
+        <div class="form-group  ">
 
 
-<div class="row">
-  <label class="text-white text-uppercase col-3 " >Amount</label>
-    <div class="input-group   col-4 offset-5" >
-
-      <input name="amount" type="text" [(ngModel)]="credit.amount"  value="{{credit.amount}}" class="form-control   " />
-      <div class="input-group-append   " >
-        <div class="input-group-text"><i class="font-weight-bold" >DTN</i></div>
-      </div>
-    </div>
-    </div>
-
-
-        <mat-slider name="amount" [(ngModel)]="credit.amount" thumbLabel [displayWith]="formatLabel" value="{{credit.amount}}" tickInterval="100" step="100" color="accent" class="form-control-range w-100 rounded mt-2 " style="background-color: #ffffff " min="999" max="100000" aria-label="units"></mat-slider>
-
-  </div>
+          <div class="row">
+            <label class=" text-uppercase col-3 ">Amount</label>
+            <div class="input-group   col-4 offset-5">
+              <input name="amount" type="text" #amount [min]="1000" [(ngModel)]="credit.amount" value="{{credit.amount}}"
+                     class="form-control   "/>
+              <div class="input-group-append   ">
+                <div class="input-group-text"><i class="font-weight-bold">DTN</i></div>
+              </div>
+            </div>
+          </div>
 
 
+          <mat-slider name="amount" [(ngModel)]="credit.amount" thumbLabel [displayWith]="formatLabel"
+                      value="{{credit.amount}}" tickInterval="100" step="100" color="primary"
+                      class="form-control-range w-100 rounded mt-2 " style="background-color: #ffffff " min="999"
+                      max="100000" aria-label="units"></mat-slider>
+<div *ngIf="amount.value==0" class="text-danger text-lowercase"> <i class="fas fa-exclamation-triangle"></i> the amout can't be null </div>
 
-    <div class="form-group">
-
-      <div class="row mt-5">
-        <label  class="col-3">Period </label>
-      <div class="input-group col-4 offset-5">
-        <input name="period" type="text" [(ngModel)]="credit.period"  value="{{credit.period}}" class="form-control " />
-        <div class="input-group-append">
-          <div class="input-group-text"><i class="font-weight-bold" >YEAR</i></div>
         </div>
-      </div>
-      </div>
-      <mat-slider name="period" [(ngModel)]="credit.period" thumbLabel [displayWith]="formatLabel" value="{{credit.period}}" tickInterval="1" step="1" color="accent" class="form-control-range w-100 bg-white rounded mt-2 "  min="2" max="50" aria-label="units"></mat-slider>    </div>
 
-      <div class="form-group">
 
-        <div class="row mt-5">
-          <label  class="col-3">InterestRate </label>
-        <div class="input-group col-4 offset-5">
-          <input name="interestRate" type="text" [(ngModel)]="credit.interestRate"  value="{{credit.interestRate}}" class="form-control " />
-          <div class="input-group-append">
-            <div class="input-group-text"><i class="font-weight-bold" >%</i></div>
+        <div class="form-group">
+
+          <div class="row mt-5">
+            <label class="col-3">Period </label>
+            <div class="input-group col-4 offset-5">
+              <input name="period" type="text" #period [(ngModel)]="credit.period" value="{{credit.period}}"
+                     class="form-control "/>
+              <div class="input-group-append">
+                <div class="input-group-text"><i class="font-weight-bold">YEAR</i></div>
+              </div>
+            </div>
+          </div>
+          <mat-slider name="period"  [(ngModel)]="credit.period" thumbLabel [displayWith]="formatLabel"
+                      value="{{credit.period}}" tickInterval="1" step="1" color="primary"
+                      class="form-control-range w-100 bg-white rounded mt-2 " min="2" max="50"
+                      aria-label="units"></mat-slider>
+          <div *ngIf="period.value==0" class="text-danger text-lowercase"> <i class="fas fa-exclamation-triangle"></i> the period can't be null </div>
+
+        </div>
+
+        <div class="form-group">
+
+          <div class="row mt-5">
+            <label class="col-3">InterestRate </label>
+            <div class="input-group col-4 offset-5">
+              <input name="interestRate" type="text" [(ngModel)]="credit.interestRate" value="{{credit.interestRate}}"
+                     class="form-control "/>
+              <div class="input-group-append">
+                <div class="input-group-text"><i class="font-weight-bold">%</i></div>
+              </div>
+            </div>
+          </div>
+          <mat-slider name="interestRate" #interrest [(ngModel)]="credit.interestRate" thumbLabel [displayWith]="formatLabel"
+                      value="{{credit.interestRate}}" tickInterval="1" step="1" color="primary"
+                      class="form-control-range w-100 rounded mt-2 bg-white " min="1" max="20"
+                      aria-label="units"></mat-slider>
+          <div *ngIf="interrest.value==0" class="text-danger text-lowercase"> <i class="fas fa-exclamation-triangle"></i> the interrest rate can't be null </div>
+
+        </div>
+
+        <br> <br>
+        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, doloribus hic illum mollitia sunt vel vero voluptate. Asperiores deleniti earum eligendi eveniet excepturi iure, minus obcaecati perspiciatis quae quasi sit?</p>
+        <div class="align-items-end mt-5">
+          <button type="submit" [disabled]="amount.value==0||period.value==0|| interrest.value==0" class="btn text-dark   col " style="background-color: #009EFB" (click)="simulate()">
+            SIMULATE
+          </button>
+        </div>
+      </form>
+    </mat-card>
+
+    <mat-card  class="mt-2 " id="contentToConvert"  *ngIf="show" >
+      <h4 class="text-secondary ">RESULT</h4>
+      <hr style="width: 50px; color: white; margin-left: 0px; border: gray solid  1px">
+      <br> <br>
+      <div class="container mt-2">
+        <div class="row m-2">
+        <div class="col-5 bg-white  border rounded  align-items-center" style=" height: 60px">
+<div class="row m-3 ">
+            <h5 class="text-uppercase text-lightblue col-5 ">
+              Amount :
+            </h5>
+
+            <h5 class="text-uppercase col-5 offset-2  ">
+
+              {{credit.amount}} DTN
+            </h5>
+          </div>
+        </div>
+        <div class="col-5 bg-white offset-2 border rounded  " style=" height: 60px">
+          <div class="col">
+            <div class="row m-3 ">
+              <h5 class="text-uppercase text-lightblue col-8 ">
+                Interraest Rate :
+              </h5>
+
+              <h5 class="text-uppercase col-3 offset-1 ">
+
+                {{credit.interestRate}} %
+              </h5>
+            </div>
           </div>
         </div>
         </div>
-        <mat-slider name="interestRate" [(ngModel)]="credit.interestRate" thumbLabel [displayWith]="formatLabel" value="{{credit.interestRate}}" tickInterval="1" step="1" color="accent" class="form-control-range w-100 rounded mt-2 bg-white "  min="1" max="20" aria-label="units"></mat-slider>      </div>
 
-    <br> <br>
-    <p> ldk,ccflkmkmvdmvm  klmkgdm mdgmkmdkf mdfgmkgmd lmkgm kgmkfgdmgklm mlfdmgm msm msmm msms msgmkmskg</p>
-<div class="align-items-end mt-5">
-    <button type="submit" class="btn text-dark   col " style="background-color: #009EFB" (click)="simulate()">SIMULATE</button>
+        <div class="row bg-white m-2 border rounded  align-items-center" style=" height: 60px">
+          <div class="col">
+            <h5 class="text-uppercase text-lightblue ml-4 ">
+
+              Peride :
+            </h5>
+          </div>
+          <div class="col-4 offset-3">
+            <h5 class="text-uppercase   ">
+              {{credit.period}} YEAR
+            </h5>
+          </div>
+        </div>
+        <div class="row m-2 mt-5">
+        <div class="col-5 alert alert-danger  border rounded  align-items-center" style=" height: 60px">
+          <div class="row  ">
+            <h5 class="text-uppercase  col-8 ">
+              monthly payement:
+            </h5>
+
+            <h5 class="text-uppercase col-4  ">
+
+              {{resalt.monthlyPayment}} DTN
+            </h5>
+          </div>
+        </div>
+          <div class="col-5 offset-2 alert alert-danger  border rounded  align-items-center" style=" height: 60px">
+            <div class="row  ">
+              <h5 class="text-uppercase  col-8 ">
+               total cost of :
+              </h5>
+
+              <h5 class="text-uppercase col-4  ">
+
+                {{resalt.total}} DTN
+              </h5>
+            </div>
+          </div>
+      </div>
+      </div>
+      <div class="row  mb-5 ml-2 mr-2  align-items-center" style=" height: 60px">
+        <div class="col-12">
+          <button class=" btn  w-100 mt-3 " style="background-color: #009EFB">Generate PDF <i
+            class="fa fa-file-pdf"></i></button>
+
+        </div>
+
+      </div>
+    </mat-card>
+
+
 </div>
-  </form>
+
+<mat-card *ngIf="show" class="mt-2">
+  <h4 class="text-secondary ">Recommended bank Offers</h4>
+  <hr style="width: 50px; color: white; margin-left: 0px; border: gray solid  1px">
+  <br> <br>
+  <div class="card" *ngFor="let offre of listOffer">
+    <div class="card-header">
+      <h6>{{offre.nameBankoffer}} ({{offre.bank.id}})</h6>
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <h6>offer description :</h6>
+        <p>
+          {{offre.descriptionBankOffer}}
+        </p>
+        <h6> Grace period :</h6>
+        <p> {{offre.gracePeriod}}</p>
+        <h6> Period :</h6>
+        <p> {{offre.period}}</p>
+        <h6> Max Credit :</h6>
+        <p> {{offre.maxCredit}}</p>
+        <h6> Self Financing :</h6>
+        <p> {{offre.selfFinancing}}</p>
+      </blockquote>
+    </div>
+  </div>
+
 </mat-card>
-
-  <mat-card class="col-5 m-1 " id="contentToConvert" style="background-color:  #0BCDE3">
-    <h1 class="text-white ">RESULT</h1>
-    <hr style="width: 50px; color: white; margin-left: 0px; border: white solid  1px">
-    <br> <br>
-    <div class="container mt-2">
-    <div class="row bg-white mb-5 ml-2 mr-2 border rounded  align-items-center" style=" height: 60px">
-      <div class="col ">
-        <h5 class="text-uppercase text-lightblue "  >
-        Amount :
-        </h5>
-      </div>
-      <div class="col">
-        <h5 class="text-uppercase text-s  "  >
-
-        {{credit.amount}} DTN
-        </h5>
-      </div>
-    </div>
-      <div class="row bg-white mb-5 ml-2 mr-2 border rounded  align-items-center" style=" height: 60px">
-        <div class="col">
-          <h5 class="text-uppercase text-lightblue "  >
-
-          InterestRate :
-          </h5>
-        </div>
-        <div class="col ">
-          <h5 class="text-uppercase text-s  "  >
-          {{credit.interestRate}} %
-          </h5>
-        </div>
-      </div>
-      <div class="row bg-white mb-5 ml-2 mr-2 border rounded  align-items-center" style=" height: 60px">
-        <div class="col">
-          <h5 class="text-uppercase text-lightblue "  >
-
-          Peride :
-          </h5>
-        </div>
-        <div class="col">
-          <h5 class="text-uppercase text-s  "  >
-          {{credit.period}} YEAR
-          </h5>
-        </div>
-      </div>
-      <div class="row bg-white mb-5 ml-2 mr-2 border rounded  align-items-center" style=" height: 60px">
-        <div class="col">
-          <h5 class="text-uppercase text-lightblue "  >
-
-          Monthly Payment :
-          </h5>
-        </div>
-        <div class="col">
-          <h5 class="text-uppercase text-s  "  >
-          {{resalt.monthlyPayment}} DTN
-          </h5>
-        </div>
-      </div>
-      <div class="row bg-white mb-5 ml-2 mr-2 border rounded  align-items-center" style=" height: 60px">
-        <div class="col">
-          <h5 class="text-uppercase text-lightblue "  >
-
-            TOTAL COST  :
-          </h5>
-        </div>
-        <div class="col">
-          <h5 class="text-uppercase text-s  "  >
-            {{resalt.total}} DTN
-          </h5>
-        </div>
-      </div>
-    </div>
-    <div class="row  mb-5 ml-2 mr-2  align-items-center" style=" height: 60px">
-      <div class="col-12">
-        <button  class=" btn  w-100 mt-3 "  style="background-color: #009EFB"  >Generate PDF <i class="fa fa-file-pdf"></i></button>
-
-      </div>
-
-  </div>
-  </mat-card>
-  </div>
-
-  </div>
-

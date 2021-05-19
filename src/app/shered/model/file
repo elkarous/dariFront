@@ -1,0 +1,9 @@
+import Popper from 'popper.js';
+import Data = Popper.Data;
+
+export class File{
+ id :number;
+   name :string;
+    type:string;
+    data :Data;
+}

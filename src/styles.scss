@@ -1,5 +1,6 @@
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { height: 50%;
+  width: 100%; }
+body { margin: 0; font-family: Roboto, "bebas Neue", sans-serif; }
 /* CSS to change Default/'Accent' color */
 
 .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
@@ -14,5 +15,4 @@ $color1 :#009EFB;
   background-color:$color1;
 
 }
-
 

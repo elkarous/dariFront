@@ -1,4 +1,4 @@
-<mat-card class=" text-white" style="background-color:#0BCDE3">
+<mat-card class=" text-dark " >
 <div class="row mb-0" >
   <div class="col ">
     <h1 class="mt-2">SIMULATOR OF CREDIT </h1>
@@ -70,3 +70,29 @@
 </div>
 
 </div>
+<div *ngIf="show">
+  <mat-card>
+  <mat-tab-group >
+    <mat-tab *ngFor="let bank of banks" label="{{bank.name}}">
+    <mat-card>
+
+      <div class="card-body">
+        <blockquote class="blockquote mb-0">
+          <h6>bank description :</h6>
+          <p>
+            {{bank.description}}
+          </p>
+          <h5> Interrest Rate  :</h5>
+          <p> {{bank.interestRate}} %</p>
+
+        </blockquote>
+      </div>
+
+
+  </mat-card>
+    </mat-tab>
+  </mat-tab-group>
+  </mat-card>
+</div>
+
+

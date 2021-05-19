@@ -7,5 +7,5 @@ export class Bank{
     description:string;
     interestRate:number;
     bankOffres:BankOffres[];
-
+    logo:File;
 }

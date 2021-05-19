@@ -1,54 +1,116 @@
-<div class="container text-white" style="background-color:#009EFB  ">
-<div class="row mb-0" >
-  <div class="col ">
-    <h1 class="mt-2">SIMULATOR OF CREDIT </h1>
-    <br>
+<mat-card class="  text-uppercase" style="color:gray ">
+  <div class="row mb-0">
+    <div class="col ">
+      <h4 class="mt-2 ">SIMULATOR OF CREDIT BY BANK </h4>
+      <hr style="width: 50px; color: black; margin-left: 0px; border: gray solid  1px">
+      <br>
 
 
-      <form class="m-3"#unitForm="ngForm" >
+      <form class="m-3" #unitForm="ngForm" (ngSubmit)="simulate()">
         <div class="form-group  ">
-            <label >Bank</label>
-            <select name="name" [(ngModel)]="name" class=" form-control form-select" >
-              <option disabled selected> --Select Bank Name--</option>
-              <option *ngFor="let name of names">{{name}}</option>
-            </select>
+          <label>Bank NAME </label>
+          <select name="name" [(ngModel)]="name" class=" form-control form-select" [required]="name" #nameid>
+            <option disabled selected> --Select Bank Name--</option>
+            <option *ngFor="let name of names">{{name}}</option>
+          </select>
+          <div *ngIf="unitForm.submitted && nameid.required==false" class="text-danger text-lowercase"><i
+            class="fas fa-exclamation-triangle"></i> the Bank Name can't be null
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <label class="text-white text-uppercase col-3 ">Amount</label>
+            <div class="input-group   col-4 offset-5">
+
+              <input name="amount" type="text" [(ngModel)]="credit.amount" value="{{credit.amount}}"
+                     class="form-control   "/>
+              <div class="input-group-append   ">
+                <div class="input-group-text"><i class="font-weight-bold">DTN</i></div>
+              </div>
+            </div>
           </div>
 
 
-  <div class="form-group">
+          <mat-slider name="amount" [(ngModel)]="credit.amount" thumbLabel [displayWith]="formatLabel"
+                      value="{{credit.amount}}" tickInterval="100" step="100" color="primary"
+                      class="form-control-range w-100 rounded mt-2 " style="background-color: #ffffff " min="999"
+                      max="100000" aria-label="units"></mat-slider>
 
-    <div class="row mt-5">
-      <label  class="col-3">Period </label>
-      <div class="input-group col-4 offset-5">
-        <input name="period" type="text" [(ngModel)]="credit.period"  value="{{credit.period}}" class="form-control " />
-        <div class="input-group-append">
-          <div class="input-group-text"><i class="font-weight-bold" >YEAR</i></div>
         </div>
-      </div>
-    </div>
-    <mat-slider name="period"[(ngModel)]="credit.period" thumbLabel [displayWith]="formatLabel" value="{{credit.period}}" tickInterval="1" step="1" color="accent" class="form-control-range w-100 bg-white rounded mt-2 "  min="2" max="50" aria-label="units"></mat-slider>    </div>
+        <div class="form-group">
 
-  <div class="form-group">
-
-    <div class="row mt-5">
-      <label  class="col-3">InterestRate </label>
-      <div class="input-group col-4 offset-5">
-        <input name="interestRate" type="text" [(ngModel)]="credit.interestRate"  value="{{credit.interestRate}}" class="form-control " />
-        <div class="input-group-append">
-          <div class="input-group-text"><i class="font-weight-bold" >%</i></div>
+          <div class="row mt-5">
+            <label class="col-3">Period </label>
+            <div class="input-group col-4 offset-5">
+              <input name="period" type="text" [(ngModel)]="credit.period" value="{{credit.period}}"
+                     class="form-control "/>
+              <div class="input-group-append">
+                <div class="input-group-text"><i class="font-weight-bold">YEAR</i></div>
+              </div>
+            </div>
+          </div>
+          <mat-slider name="period" [(ngModel)]="credit.period" thumbLabel [displayWith]="formatLabel"
+                      value="{{credit.period}}" tickInterval="1" step="1" color="primary"
+                      class="form-control-range w-100 bg-white rounded mt-2 " min="2" max="50"
+                      aria-label="units"></mat-slider>
         </div>
-      </div>
-    </div>
-    <mat-slider name="interestRate" [(ngModel)]="credit.interestRate" thumbLabel [displayWith]="formatLabel" value="{{credit.interestRate}}" tickInterval="1" step="1" color="accent" class="form-control-range w-100 rounded mt-2 bg-white "  min="1" max="20" aria-label="units"></mat-slider>      </div>
 
-  <br> <br>
-  <div class="align-items-end mt-5">
-    <button type="submit" class="btn text-white   col " style="background-color: #0BCDE3" (click)="simulate()">SIMULATE</button>
-  </div>
+
+        <br> <br>
+        <div class="align-items-end mt-5">
+          <button type="submit" class="btn text-white   col " style="background-color: #009EFB" >
+            SIMULATE
+          </button>
+        </div>
       </form>
 
+    </div>
+
+  </div>
+
+</mat-card>
+<div *ngIf="show">
+  <div class="card card-primary card-outline">
+    <div class="card-header">
+      <h3 class="card-title">
+        <i class="far fa-chart-bar"></i>
+        SIMULATION
+      </h3>
+
+      <div class="card-tools">
+        <button type="button" class="btn btn-tool " mat-dialog-close data-card-widget="remove">
+          <i class="fas fa-window-close fa-2x"></i>
+        </button>
+      </div>
+    </div>
+    <div class="card-body">
+      <div id="morris-bar-chart"></div>
+    </div>
+    <!-- /.card-body-->
   </div>
 
 </div>
-</div>
+<mat-card class="mt-2" *ngIf="show">
+  <h4 class="text-secondary ">OFFERS OF {{name}} ({{listOffer.length}})</h4>
+  <hr style="width: 50px; color: white; margin-left: 0px; border: gray solid  1px">
+  <div class="card" *ngFor="let offre of listOffer">
+    <div class="card-header">
+      <h5>{{offre.nameBankoffer}}</h5>
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <h6>offer description :</h6>
+        <p>
+          {{offre.descriptionBankOffer}}
+        </p>
+        <h5> Grace period :</h5>
+        <p> {{offre.gracePeriod}}</p>
+        <h5> Period :</h5>
+        <p> {{offre.period}}</p>
+      </blockquote>
+    </div>
+  </div>
 
+</mat-card>

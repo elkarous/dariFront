@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpErrorResponse, HttpHeaders  } from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpEvent, HttpHeaders} from '@angular/common/http';
 import { Bank } from '../shered/model/bank';
 import {  throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -7,12 +7,14 @@ import { Observable } from 'rxjs';
 import { BankOffres } from '../shered/model/bankOffres';
 import { Credit } from '../shered/model/credit';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class BankServiceService {
   private apiServer = "http://localhost:8081/dari/bank/";
   bank!: Bank;
+  fileToUpload: File = null;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -20,6 +22,29 @@ export class BankServiceService {
   }
 
   constructor(private http :HttpClient) { }
+
+  upload(file: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+
+    formData.append('file', file);
+ return  this.http.post<any>( "http://localhost:8081/dari/upload",formData,{
+  reportProgress: true,
+  responseType: 'json'
+});
+
+
+  }
+
+  getFiles(): Observable<any> {
+    return this.http.get<any>("http://localhost:8081/dari/files");
+  }
+  getlogo(id:number): Observable<any> {
+    return this.http.get<any>("http://localhost:8081/dari/files/"+id);
+  }
+
+
+
+
 
   getAll(): Observable<Bank[]> {
     return this.http.get<Bank[]>(this.apiServer + 'getAllBanks') .pipe(
@@ -92,7 +117,7 @@ export class BankServiceService {
       )
   }
   getBestOffre(credit:Credit): Observable<BankOffres[]> {
-    return this.http.post<BankOffres[]>(this.apiServer + 'getBestOffres', this.httpOptions)
+    return this.http.post<BankOffres[]>(this.apiServer + 'getBestOffres',credit, this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       )
