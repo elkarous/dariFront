@@ -44,7 +44,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import {AgmCoreModule} from '@agm/core';
 import {MatTabsModule} from '@angular/material/tabs';
-import { ChartResultComponent } from './Simulation Repository/chart-result/chart-result.component';
+
 import { DashboardComponent } from './Dashboard Repository/dashboard/dashboard.component';
 import {JwtInterceptor} from './services/jwt.interceptor';
 import { DashHomeComponent } from './Dashboard Repository/dash-home/dash-home.component';
@@ -79,7 +79,7 @@ import { UploadComponent } from './upload/upload.component';
     UpdateOffreComponent,
     UpdateUnitPriceComponent,
     CarouselComponent,
-    ChartResultComponent,
+
     DashboardComponent,
     DashHomeComponent,
     PageNotFoundComponent,

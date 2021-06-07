@@ -25,22 +25,21 @@
 <table class="table text-dark border border rounded ">
   <thead>
   <tr>
-    <th scope="col">logo</th>
+
     <th scope="col">Name</th>
     <th scope="col">Description</th>
     <th scope="col">Intrest Rate</th>
+    <th scope="col">website</th>
     <th scope="col">Actions</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let bank of banks">
-    <td><img class="card-img-top img-responsive"
-                         src = 'http://localhost:8081/web/img/capture.png'
-                         style = "height :100px;width:100px"
-                         alt=""></td>
+
     <td>{{bank.name}}</td>
     <td>{{bank.description}}</td>
     <td>{{bank.interestRate}}</td>
+    <td><a href="{{bank.webSite}}">{{bank.webSite}}</a></td>
     <td><span [ngbTooltip]="tipshow" class=" text-success mr-2" id="getOffre" (click)="getOffres(bank)"><i
       class="fas fa-eye fa-2x"></i></span>
       <ng-template #tipContent class="tooltip-inner">Edit Bank</ng-template>

@@ -16,7 +16,9 @@ export class EstimationComponent implements OnInit {
   house: House;
   showadresse=true;
   showkind=false;
+  showb=false;
   show=false;
+  shownb=false;
   constructor( private estimationservise: EstimationServiceService ) { }
   municipals :String[]=["select"]
   ngOnInit(): void {
@@ -32,6 +34,11 @@ export class EstimationComponent implements OnInit {
     this.showadresse=!this.showadresse
     this.showkind=!this.showkind
 
+  }
+  next1(){
+
+    this.showkind=!this.showkind
+this.showb=!this.showb
   }
 getMunicipale(){
     this.estimationservise.getAll().subscribe(data=>{
@@ -49,6 +56,7 @@ getMunicipale(){
       this.resulat=new Map(Object.entries(data));
     } );
     this.show=true
+    this.showb=false;
   }
 
 }

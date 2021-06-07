@@ -1,9 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Credit} from '../../shered/model/credit';
 import {SimulationServiceService} from '../../services/simulation-service.service';
-import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
-import {Unitprice} from '../../shered/model/unitprice';
-import {ChartResultComponent} from '../chart-result/chart-result.component';
+
 import {BankServiceService} from '../../services/bank-service.service';
 import {BankOffres} from '../../shered/model/bankOffres';
 import {FormControl, Validators} from '@angular/forms';
@@ -82,7 +80,7 @@ getBankByName(){
         responsive: true,
         ykeys: ['a'],
         labels: ["Monthly Payement"],
-        barColors: ["#009efb"]
+        barColors: ["#234099"]
       });
 
 

@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
         res => this.handleResponse(res),
         err => this.toastr.error(
           `Erreur`,
-          'Merci de Vérifier votre email ou mot de passe !',
+          'verify your informations !',
           {
             timeOut: 3000,
             positionClass: 'toast-bottom-left'
@@ -49,8 +49,8 @@ export class LoginComponent implements OnInit {
     this.token.handle(data);
     this.account.changeAuthStatus(true);
     this.toastr.success(
-      `Bienvenu : ${ this.token.getInfos().name }`,
-      'Vous êtes connectés !',
+      `Welcome : ${ this.token.getInfos().name }`,
+      'You are connected !',
       {
         timeOut: 3000,
         positionClass: 'toast-bottom-left'

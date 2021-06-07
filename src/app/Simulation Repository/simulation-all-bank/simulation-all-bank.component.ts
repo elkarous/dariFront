@@ -3,7 +3,6 @@ import {Credit} from '../../shered/model/credit';
 import {SimulationServiceService} from '../../services/simulation-service.service';
 import {MatDialog} from '@angular/material/dialog';
 
-import {ChartResultComponent} from '../chart-result/chart-result.component';
 import {BankServiceService} from '../../services/bank-service.service';
 import {Bank} from '../../shered/model/bank';
 
@@ -75,7 +74,7 @@ this.fonction()
         responsive: true,
         ykeys: ['a'],
         labels: ["Monthly Payement"],
-        barColors: ["#009efb"]
+        barColors: ["#234099"]
       });
 
 

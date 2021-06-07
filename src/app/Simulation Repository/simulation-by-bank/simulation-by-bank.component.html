@@ -92,10 +92,10 @@
   </div>
 
 </div>
-<mat-card class="mt-2" *ngIf="show">
+<mat-card class="mt-2 " *ngIf="show">
   <h4 class="text-secondary ">OFFERS OF {{name}} ({{listOffer.length}})</h4>
   <hr style="width: 50px; color: white; margin-left: 0px; border: gray solid  1px">
-  <div class="card" *ngFor="let offre of listOffer">
+  <div class="card w-75" *ngFor="let offre of listOffer">
     <div class="card-header">
       <h5>{{offre.nameBankoffer}}</h5>
     </div>
